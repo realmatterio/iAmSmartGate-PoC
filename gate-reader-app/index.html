@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAmSmartGate - Access Gate Reader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;         
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 16px solid #ff9500;
+            transition: border-color 0.5s;
+            padding: 8px;
+        }
+        
+        .container.ready {
+            border-color: #ff9500;
+        }
+        
+        .container.granted {
+            border-color: #34c759;
+        }
+        
+        .container.rejected {
+            border-color: #ff3b30;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4DB8A8 0%, #3A9D8F 100%); 
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 3px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 0.85em;
+        }
+        
+        .content {
+            padding: 30px;
+            background: white;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4DB8A8;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background: #4DB8A8;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3A9D8F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(77, 184, 168, 0.3);
+        }
+        
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+        
+        .btn-outline {
+            background: white;
+            color: #4DB8A8;
+            border: 2px solid #4DB8A8;
+        }
+        
+        .btn-outline:hover {
+            background: #4DB8A8;
+            color: white;
+        }
+        
+        .info-card {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4DB8A8;
+        }
+        
+        .info-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .info-card p {
+            color: #4a5568;
+            font-size: 0.9em;
+            word-wrap: break-word;
+        }
+        
+        #video-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            margin: 0 auto 20px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .info-box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #4a5568;
+            border-radius: 10px;
+            background: white;
+        }
+        
+        .result-box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid;
+            border-radius: 10px;
+            background: white;
+        }
+        
+        .result-box.granted {
+            border-color: #34c759;
+        }
+        
+        .result-box.rejected {
+            border-color: #ff3b30;
+        }
+        
+        .result-emoji {
+            font-size: 8em;
+            margin-bottom: 20px;
+        }
+        
+        .result-text {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .result-text.granted {
+            color: #34c759;
+        }
+        
+        .result-text.rejected {
+            color: #ff3b30;
+        }
+        
+        #video {
+            width: 100%;
+            display: block;
+        }
+        
+        #canvas {
+            display: none;
+        }
+        
+        .scan-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            border: 5px solid #ff9500;
+            border-radius: 10px;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+        }
+        
+        .scan-corners {
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+        }
+        
+        .scan-corners::before,
+        .scan-corners::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #ff9500;
+        }
+        
+        .scan-corners::before {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .scan-corners::after {
+            top: 0;
+            right: 0;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .qr-image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        #qr-image {
+            max-width: 100%;
+            border: 3px solid #4DB8A8;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .result-banner {
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .result-pass {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+            border: 3px solid #48bb78;
+        }
+        
+        .result-nopass {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+            border: 3px solid #f56565;
+        }
+        
+        .result-revoked {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            border: 3px solid #ed8936;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f56565;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .debug-panel {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .debug-panel h4 {
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+        
+        .debug-entry {
+            margin: 5px 0;
+            padding: 5px;
+            background: #1a202c;
+            border-radius: 4px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-active {
+            background: #48bb78;
+            box-shadow: 0 0 10px #48bb78;
+        }
+        
+        .status-inactive {
+            background: #f56565;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Access Gate QR Code Reader</h1>
+            <p>iAM SmartGate</p>
+        </div>
+        
+        <div class="content">
+            <!-- Login Page -->
+            <div id="login-page" class="page active">
+                <h2 style="margin-bottom: 20px; color: #2d3748;">Gate Login</h2>
+                <div id="login-error" style="display: none;"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Tablet ID</label>
+                        <input type="text" id="tablet-id" required placeholder="GATE001">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" required placeholder="demo123">
+                    </div>
+                    <div class="form-group">
+                        <label>GPS Location (Auto-detected)</label>
+                        <input type="text" id="gps-location" readonly placeholder="Detecting location...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p style="text-align: center; margin-top: 15px; color: #718096; font-size: 0.9em;">
+                        Demo: Use "GATE001" / "demo123" (GPS is spoofable - demo only)
+                    </p>
+                </form>
+            </div>
+            
+            <!-- Wallet Page -->
+            <div id="wallet-page" class="page">
+                <h2 style="margin-bottom: 20px; color: #2d3748;">Gate Information</h2>
+                <div class="info-card">
+                    <p><span class="status-indicator status-active"></span><strong>Status:</strong> Active</p>
+                </div>
+                <div class="info-card">
+                    <h3>Tablet ID</h3>
+                    <p id="wallet-tablet-id"></p>
+                </div>
+                <div class="info-card">
+                    <h3>Site</h3>
+                    <p id="wallet-site-id"></p>
+                </div>
+                <div class="info-card">
+                    <h3>GPS Location</h3>
+                    <p id="wallet-gps"></p>
+                </div>
+                <div class="info-card">
+                    <h3>Public Key</h3>
+                    <p id="wallet-public-key" style="font-size: 0.75em; word-break: break-all;"></p>
+                </div>
+                <button class="btn btn-primary" onclick="showPage('scan-page')">📷 Start Scanning</button>
+                <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>
+            </div>
+            
+            <!-- Scan Page -->
+            <div id="scan-page" class="page">
+                <h2 style="margin-bottom: 20px; color: #2d3748; text-align: center;">Scan QR Code</h2>
+                <div id="video-container">
+                    <video id="video" autoplay playsinline></video>
+                    <div class="scan-overlay">
+                        <div class="scan-corners"></div>
+                    </div>
+                </div>
+                <canvas id="canvas"></canvas>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <p style="color: #4a5568; font-size: 0.9em;">Position QR code within the frame</p>
+                    <p id="scan-status" style="color: #4DB8A8; font-weight: 600; margin-top: 10px;">Ready to scan...</p>
+                </div>
+                
+                <!-- Test Mode: Upload QR Code Image -->
+                <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #92400e; margin-bottom: 10px;">🧪 Test Mode: Upload QR Code</h4>
+                    <input type="file" id="qr-upload" accept="image/*" style="display: none;" onchange="handleQRUpload(event)">
+                    <button class="btn btn-secondary" onclick="document.getElementById('qr-upload').click();" style="background: #f59e0b; margin-bottom: 5px;">📁 Upload QR Code Image</button>
+                    <p style="color: #92400e; font-size: 0.85em; margin-top: 5px;">For testing: Upload a screenshot or photo of a QR code</p>
+                </div>
+                
+                <button class="btn btn-outline" onclick="showPage('wallet-page'); stopCamera();">← Back</button>
+            </div>
+            
+            <!-- Result Page -->
+            <div id="result-page" class="page">
+                <h2 style="margin-bottom: 20px; color: #2d3748; text-align: center;">Scan Result</h2>
+                
+                <div id="video-container">
+                    <div id="result-display" class="result-box"></div>
+                </div>
+                
+                <div id="result-details" class="info-card" style="display: none;">
+                    <h3>Pass Details</h3>
+                    <p><strong>Pass ID:</strong> <span id="detail-pass-id"></span></p>
+                    <p><strong>User:</strong> <span id="detail-user"></span></p>
+                    <p><strong>Site:</strong> <span id="detail-site"></span></p>
+                    <p><strong>Purpose:</strong> <span id="detail-purpose"></span></p>
+                </div>
+                
+                <div id="result-error" class="info-card" style="display: none;">
+                    <h3>Error Details</h3>
+                    <p id="error-reason"></p>
+                </div>
+                
+                <button id="scan-another-btn" class="btn btn-primary" onclick="handleScanAnotherClick()">🔄 Scan Another</button>
+                <button class="btn btn-outline" onclick="showPage('wallet-page'); stopCamera();">← Back to Gate Info</button>
+            </div>
+            
+            <!-- Debug Panel (Test Mode) -->
+            <div id="debug-panel" class="debug-panel" style="display: none;">
+                <h4>🔧 Debug Log</h4>
+                <div id="debug-log"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        const DEBUG_MODE = true; // Test/Debug mode
+        
+        let authToken = null;
+        let currentGate = null;
+        let videoStream = null;
+        let scanInterval = null;
+        let lastScannedData = null;
+        let autoReturnTimer = null;
+        let isHoldingResult = false;
+        
+        // Debug logging
+        function debugLog(message) {
+            if (DEBUG_MODE) {
+                const debugPanel = document.getElementById('debug-panel');
+                debugPanel.style.display = 'block';
+                const logContainer = document.getElementById('debug-log');
+                const entry = document.createElement('div');
+                entry.className = 'debug-entry';
+                entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+                logContainer.insertBefore(entry, logContainer.firstChild);
+                console.log(message);
+            }
+        }
+        
+        // Show page
+        function showPage(pageId) {
+            debugLog(`Navigating to ${pageId}`);
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update container border color
+            const container = document.querySelector('.container');
+            if (pageId === 'scan-page') {
+                container.className = 'container ready';
+                startCamera();
+            } else if (pageId === 'wallet-page') {
+                container.className = 'container ready';
+            } else if (pageId === 'login-page') {
+                container.className = 'container ready';
+            }
+            
+            // Clear auto-return timer if navigating manually
+            if (autoReturnTimer) {
+                clearTimeout(autoReturnTimer);
+                autoReturnTimer = null;
+            }
+        }
+        
+        // Show error message
+        function showError(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.className = 'error-message';
+            container.textContent = message;
+            container.style.display = 'block';
+            setTimeout(() => container.style.display = 'none', 5000);
+        }
+        
+        // Get GPS location
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                if (!navigator.geolocation) {
+                    debugLog('Geolocation not supported, using default');
+                    resolve('22.3193,114.1694'); // Default Hong Kong location
+                    return;
+                }
+                
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const location = `${position.coords.latitude},${position.coords.longitude}`;
+                        debugLog(`GPS location: ${location}`);
+                        resolve(location);
+                    },
+                    (error) => {
+                        debugLog(`GPS error: ${error.message}, using default`);
+                        resolve('22.3193,114.1694'); // Default Hong Kong location
+                    }
+                );
+            });
+        }
+        
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const tabletId = document.getElementById('tablet-id').value;
+            const password = document.getElementById('password').value;
+            const gpsLocation = document.getElementById('gps-location').value;
+            
+            debugLog(`Login attempt: ${tabletId}, GPS: ${gpsLocation}`);
+            
+            try {
+                const res = await fetch(`${API_BASE}/gate-login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tablet_id: tabletId, password, gps_location: gpsLocation })
+                });
+                
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    showError('login-error', data.error || 'Login failed');
+                    debugLog(`Login failed: ${data.error}`);
+                    return;
+                }
+                
+                authToken = data.token;
+                currentGate = data.gate;
+                localStorage.setItem('gate_token', authToken);
+                localStorage.setItem('current_gate', JSON.stringify(currentGate));
+                
+                debugLog(`Login successful: ${currentGate.tablet_id}`);
+                
+                // Update wallet page
+                document.getElementById('wallet-tablet-id').textContent = currentGate.tablet_id;
+                document.getElementById('wallet-site-id').textContent = currentGate.site_id;
+                document.getElementById('wallet-gps').textContent = currentGate.gps_location;
+                document.getElementById('wallet-public-key').textContent = currentGate.public_key;
+                
+                showPage('wallet-page');
+            } catch (err) {
+                showError('login-error', 'Network error: ' + err.message);
+                debugLog(`Login error: ${err.message}`);
+            }
+        });
+                // Handle QR code image upload (for testing)
+        async function handleQRUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            debugLog(`QR image uploaded: ${file.name}`);
+            document.getElementById('scan-status').textContent = 'Processing uploaded image...';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    // Create temporary canvas to decode image
+                    const tempCanvas = document.createElement('canvas');
+                    const tempContext = tempCanvas.getContext('2d');
+                    tempCanvas.width = img.width;
+                    tempCanvas.height = img.height;
+                    tempContext.drawImage(img, 0, 0);
+                    
+                    // Get image data
+                    const imageData = tempContext.getImageData(0, 0, img.width, img.height);
+                    
+                    // Decode QR code
+                    const code = jsQR(imageData.data, imageData.width, imageData.height);
+                    
+                    if (code) {
+                        debugLog(`QR decoded from image: ${code.data.substring(0, 50)}...`);
+                        document.getElementById('scan-status').textContent = '✓ QR code detected in image!';
+                        processQRCode(code.data);
+                    } else {
+                        debugLog('No QR code found in uploaded image');
+                        document.getElementById('scan-status').textContent = '❌ No QR code found in image';
+                        setTimeout(() => {
+                            document.getElementById('scan-status').textContent = 'Ready to scan...';
+                        }, 3000);
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            
+            // Reset file input
+            event.target.value = '';
+        }
+                // Start camera
+        async function startCamera() {
+            debugLog('Starting camera');
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment' }
+                });
+                
+                const video = document.getElementById('video');
+                video.srcObject = videoStream;
+                
+                // Start scanning
+                scanInterval = setInterval(scanQRCode, 500);
+                document.getElementById('scan-status').textContent = 'Ready to scan...';
+                debugLog('Camera started');
+            } catch (err) {
+                alert('Camera access denied: ' + err.message);
+                debugLog(`Camera error: ${err.message}`);
+                showPage('wallet-page');
+            }
+        }
+        
+        // Stop camera
+        function stopCamera() {
+            debugLog('Stopping camera');
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+            }
+            if (scanInterval) {
+                clearInterval(scanInterval);
+                scanInterval = null;
+            }
+        }
+        
+        // Scan QR code
+        function scanQRCode() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height);
+                
+                if (code) {
+                    debugLog('QR code detected');
+                    document.getElementById('scan-status').textContent = '✓ QR Code Detected!';
+                    document.getElementById('scan-status').style.color = '#48bb78';
+                    
+                    // Prevent duplicate scans
+                    if (code.data === lastScannedData) {
+                        return;
+                    }
+                    lastScannedData = code.data;
+                    
+                    // Show captured QR image
+                    canvas.toBlob((blob) => {
+                        const url = URL.createObjectURL(blob);
+                        document.getElementById('qr-image').src = url;
+                    });
+                    
+                    // Process QR code
+                    processQRCode(code.data);
+                    stopCamera();
+                }
+            }
+        }
+        
+        // Process QR code
+        async function processQRCode(qrData) {
+            debugLog('Processing QR code');
+            debugLog(`QR data: ${qrData.substring(0, 100)}...`);
+            
+            try {
+                const res = await fetch(`${API_BASE}/scan-qr`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ qr_payload: qrData })
+                });
+                
+                const data = await res.json();
+                
+                debugLog(`Scan result: ${data.result}`);
+                
+                // Display result in centered box
+                const resultDisplay = document.getElementById('result-display');
+                const container = document.querySelector('.container');
+                const detailsDiv = document.getElementById('result-details');
+                const errorDiv = document.getElementById('result-error');
+                
+                if (data.result === 'Pass') {
+                    resultDisplay.className = 'result-box granted';
+                    resultDisplay.innerHTML = '<div class="result-emoji">✅</div><div class="result-text granted">ACCESS GRANTED</div>';
+                    container.className = 'container granted';
+                    
+                    detailsDiv.style.display = 'block';
+                    errorDiv.style.display = 'none';
+                    
+                    if (data.pass_details) {
+                        document.getElementById('detail-pass-id').textContent = data.pass_details.pass_id;
+                        document.getElementById('detail-user').textContent = data.pass_details.user;
+                        document.getElementById('detail-site').textContent = data.pass_details.site;
+                        document.getElementById('detail-purpose').textContent = data.pass_details.purpose;
+                    }
+                } else {
+                    resultDisplay.className = 'result-box rejected';
+                    const emoji = data.result === 'Revoked' ? '⚠️' : '❌';
+                    const text = data.result === 'Revoked' ? 'PASS REVOKED' : 'ACCESS REJECTED';
+                    resultDisplay.innerHTML = `<div class="result-emoji">${emoji}</div><div class="result-text rejected">${text}</div>`;
+                    container.className = 'container rejected';
+                    
+                    detailsDiv.style.display = 'none';
+                    errorDiv.style.display = 'block';
+                    document.getElementById('error-reason').textContent = data.reason || 'Invalid pass';
+                }
+                
+                showPage('result-page');
+                
+                // Reset hold state
+                isHoldingResult = false;
+                document.getElementById('scan-another-btn').textContent = '🔄 Scan Another';
+                
+                // Auto-return to scan page after 5 seconds
+                autoReturnTimer = setTimeout(() => {
+                    if (!isHoldingResult) {
+                        debugLog('Auto-returning to scan page');
+                        showPage('scan-page');
+                        startCamera();
+                    }
+                }, 5000);
+                
+                // Reset last scanned after showing result
+                setTimeout(() => {
+                    lastScannedData = null;
+                }, 3000);
+                
+            } catch (err) {
+                debugLog(`Process QR error: ${err.message}`);
+                alert('Error processing QR code: ' + err.message);
+                showPage('scan-page');
+                startCamera();
+            }
+        }
+        
+        // Handle scan another button click
+        function handleScanAnotherClick() {
+            if (!isHoldingResult) {
+                // First click - change to hold mode
+                isHoldingResult = true;
+                document.getElementById('scan-another-btn').textContent = '⏸️ Hold Scan Result';
+                if (autoReturnTimer) {
+                    clearTimeout(autoReturnTimer);
+                    autoReturnTimer = null;
+                }
+                debugLog('Holding result display');
+            } else {
+                // Already in hold mode - go back to scan
+                showPage('scan-page');
+                startCamera();
+            }
+        }
+        
+        // Logout
+        function logout() {
+            debugLog('Logging out');
+            authToken = null;
+            currentGate = null;
+            localStorage.removeItem('gate_token');
+            localStorage.removeItem('current_gate');
+            stopCamera();
+            showPage('login-page');
+        }
+        
+        // Check for saved session and get GPS
+        window.addEventListener('load', async () => {
+            // Get GPS location
+            const location = await getLocation();
+            document.getElementById('gps-location').value = location;
+            
+            // Check saved session
+            const savedToken = localStorage.getItem('gate_token');
+            const savedGate = localStorage.getItem('current_gate');
+            
+            if (savedToken && savedGate) {
+                authToken = savedToken;
+                currentGate = JSON.parse(savedGate);
+                
+                document.getElementById('wallet-tablet-id').textContent = currentGate.tablet_id;
+                document.getElementById('wallet-site-id').textContent = currentGate.site_id;
+                document.getElementById('wallet-gps').textContent = currentGate.gps_location;
+                document.getElementById('wallet-public-key').textContent = currentGate.public_key;
+                
+                showPage('wallet-page');
+                debugLog('Restored session for: ' + currentGate.tablet_id);
+            } else {
+                debugLog('No saved session, showing login');
+            }
+        });
+        
+        debugLog('Gate Reader App initialized');
+    </script>
+</body>
+</html>

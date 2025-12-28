@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAmSmartGate - User Wallet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: #1c1c1e;
+            border-radius: 40px;
+            box-shadow: 0 0 0 12px #2c2c2e, 0 20px 60px rgba(0,0,0,0.8);
+            overflow: hidden;
+            border: 1px solid #3a3a3c;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4DB8A8 0%, #3A9D8F 100%); 
+            color: white;
+            padding: 25px 20px 15px;
+            text-align: center;
+            border-bottom: 1px solid #3a3a3c;
+        }
+        
+        .header img {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 1.3em;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            opacity: 0.6;
+            font-size: 0.85em;
+        }
+        
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            background: #1c1c1e;
+            padding: 10px 15px 0;
+            border-bottom: 1px solid #3a3a3c;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            flex: 1;
+            min-width: 70px;
+            padding: 8px 5px 12px;
+            text-align: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #8e8e93;
+            font-size: 0.7em;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab .emoji {
+            display: block;
+            font-size: 1.8em;
+            margin-bottom: 3px;
+        }
+        
+        .tab.active {
+            color: #34c759;
+            border-bottom-color: #34c759;
+        }
+        
+        .tab:hover:not(.active) {
+            color: #aeaeb2;
+        }
+        
+        .content {
+            padding: 20px;
+            background: #1c1c1e;
+            min-height: 400px;
+            color: white;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #e5e5e7;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #3a3a3c;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border 0.3s;
+            background: #2c2c2e;
+            color: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #34c759;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background: #34c759;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2fb350;
+            transform: translateY(-1px);
+        }
+        
+        .btn-logout {
+            background: #ff3b30;
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 80px);
+            max-width: 360px;
+        }
+        
+        .btn-logout:hover {
+            background: #e6342a;
+        }
+        
+        .btn-secondary {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #38a169;
+        }
+        
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+        
+        .btn-outline {
+            background: #2c2c2e;
+            color: #34c759;
+            border: 1px solid #34c759;
+        }
+        
+        .btn-outline:hover {
+            background: #34c759;
+            color: white;
+        }
+        
+        .info-card {
+            background: #2c2c2e;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #34c759;
+        }
+        
+        .info-card h3 {
+            color: #e5e5e7;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .info-card p {
+            color: #aeaeb2;
+            font-size: 0.9em;
+            word-wrap: break-word;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8e8e93;
+        }
+        
+        .empty-state .emoji {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .pass-card {
+            background: #2c2c2e;
+            border: 1px solid #3a3a3c;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pass-card:hover {
+            box-shadow: 0 4px 12px rgba(52, 199, 89, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .pass-card.active {
+            border-color: #34c759;
+            background: linear-gradient(135deg, #1e3a28 0%, #2c4a36 100%);
+        }
+        
+        .pass-card.inactive {
+            opacity: 0.5;
+            background: #1c1c1e;
+        }
+        
+        .pass-card h3 {
+            color: #e5e5e7;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        
+        .pass-card p {
+            color: #aeaeb2;
+            font-size: 0.85em;
+            margin: 3px 0;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .status-process {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-nopass {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .status-used {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .status-revoked {
+            background: #fecaca;
+            color: #7f1d1d;
+        }
+        
+        .qr-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #qr-code {
+            margin: 20px auto;
+            max-width: 100%;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            display: inline-block;
+            border: 5px solid #34c759;
+            transition: border-color 0.3s;
+        }
+        
+        #qr-code.expired {
+            border-color: #ff3b30;
+        }
+        
+        .timer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #34c759;
+            margin: 20px 0;
+        }
+        
+        .timer.warning {
+            color: #ff9500;
+        }
+        
+        .timer.danger {
+            color: #ff3b30;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-buttons button {
+            width: 48%;
+        }
+        
+        .error-message {
+            background: #3a1f1e;
+            color: #ff6961;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff3b30;
+        }
+        
+        .success-message {
+            background: #1e3a28;
+            color: #64d88d;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #34c759;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #8e8e93;
+        }
+        
+        .spinner {
+            border: 4px solid #3a3a3c;
+            border-top: 4px solid #34c759;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .debug-panel {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .debug-panel h4 {
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+        
+        .debug-entry {
+            margin: 5px 0;
+            padding: 5px;
+            background: #1a202c;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visitor Pass & User Wallet</h1>
+            <p>iAM SmartGate</p>
+        </div>
+        
+        <!-- Tab Navigation (Hidden on Login Page) -->
+        <div id="tab-navigation" class="tabs" style="display: none;">
+            <button class="tab active" onclick="showTab('wallet')">
+                <span class="emoji">🔐</span>
+                <span>Wallet ID</span>
+            </button>
+            <button class="tab" onclick="showTab('apply')">
+                <span class="emoji">📝</span>
+                <span>Apply for Pass</span>
+            </button>
+            <button class="tab" onclick="showTab('status')">
+                <span class="emoji">📊</span>
+                <span>View Status</span>
+            </button>
+            <button class="tab" onclick="showTab('passes')">
+                <span class="emoji">🎫</span>
+                <span>My Passes</span>
+            </button>
+        </div>
+        
+        <div class="content"
+            <!-- Login Page -->
+            <div id="login-page" class="page active">
+                <h2 style="margin-bottom: 20px; color: #e5e5e7;">Login</h2>
+                <div id="login-error" style="display: none;"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>iAmSmart ID</label>
+                        <input type="text" id="iamsmart-id" required placeholder="USER001">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" required placeholder="demo123">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p style="text-align: center; margin-top: 15px; color: #8e8e93; font-size: 0.9em;">
+                        Demo: Use any ID starting with "USER" or password "demo123"
+                    </p>
+                </form>
+            </div>
+            
+            <!-- Wallet Page -->
+            <div id="wallet-page" class="page">
+                <div class="info-card">
+                    <h3>User ID</h3>
+                    <p id="wallet-user-id"></p>
+                </div>
+                <div class="info-card">
+                    <h3>Public Key</h3>
+                    <p id="wallet-public-key" style="font-size: 0.75em;"></p>
+                </div>
+                <div class="info-card">
+                    <h3>Device ID</h3>
+                    <p id="wallet-device-id"></p>
+                </div>
+            </div>
+            
+            <!-- Apply Pass Page -->
+            <div id="apply-pass-page" class="page">
+                <h3 style="margin-bottom: 20px; color: #e5e5e7;">Apply for Visit Pass</h3>
+                <div id="apply-error" style="display: none;"></div>
+                <div id="apply-success" style="display: none;"></div>
+                <form id="apply-form">
+                    <div class="form-group">
+                        <label>Site</label>
+                        <select id="apply-site" required>
+                            <option value="">Select Site</option>
+                            <option value="SITE001">Main Campus</option>
+                            <option value="SITE002">Student Halls</option>
+                            <option value="SITE003">Research Center</option>
+                            <option value="SITE004">Library</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Purpose</label>
+                        <select id="apply-purpose" required>
+                            <option value="">Select Purpose</option>
+                            <option value="PURP001">Meeting</option>
+                            <option value="PURP002">Tour</option>
+                            <option value="PURP003">Delivery</option>
+                            <option value="PURP004">Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Visit Date & Time</label>
+                        <input type="datetime-local" id="apply-datetime" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </form>
+            </div>
+            
+            <!-- Status Page -->
+            <div id="status-page" class="page">
+                <h3 style="margin-bottom: 20px; color: #e5e5e7;">Application Status</h3>
+                <div id="status-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading status...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pass List Page -->
+            <div id="pass-list-page" class="page">
+                <h3 style="margin-bottom: 20px; color: #e5e5e7;">My Passes</h3>
+                <div id="pass-list-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading passes...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QR Code Page -->
+            <div id="qr-page" class="page">
+                <h3 style="margin-bottom: 20px; color: #e5e5e7; text-align: center;">Access Pass QR Code</h3>
+                <div id="qr-error" style="display: none;"></div>
+                <div class="qr-container">
+                    <div class="timer" id="qr-timer">60</div>
+                    <div id="qr-code"></div>
+                    <div class="info-card" style="margin-top: 20px;">
+                        <p><strong>Pass ID:</strong> <span id="qr-pass-id"></span></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="regenerateQR()">🔄 Regenerate QR</button>
+                <button class="btn btn-outline" onclick="showTab('passes')">← Back to Passes</button>
+            </div>
+            
+            <!-- Debug Panel (Test Mode) -->
+            <div id="debug-panel" class="debug-panel" style="display: none;">
+                <h4>🔧 Debug Log</h4>
+                <div id="debug-log"></div>
+            </div>
+        </div>
+        
+        <!-- Logout Button (Fixed at Bottom) -->
+        <button id="logout-button" class="btn btn-logout" style="display: none;" onclick="logout()">🚪 Logout</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        const DEBUG_MODE = true; // Test/Debug mode
+        
+        let authToken = null;
+        let currentUser = null;
+        let currentPass = null;
+        let qrTimer = null;
+        
+        // Debug logging
+        function debugLog(message) {
+            if (DEBUG_MODE) {
+                const debugPanel = document.getElementById('debug-panel');
+                debugPanel.style.display = 'block';
+                const logContainer = document.getElementById('debug-log');
+                const entry = document.createElement('div');
+                entry.className = 'debug-entry';
+                entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+                logContainer.insertBefore(entry, logContainer.firstChild);
+                console.log(message);
+            }
+        }
+        
+        // Show page
+        function showPage(pageId) {
+            debugLog(`Navigating to ${pageId}`);
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // Load data for specific pages
+            if (pageId === 'status-page') loadStatus();
+            if (pageId === 'pass-list-page') loadPasses();
+        }
+        
+        // Show tab
+        function showTab(tabName) {
+            debugLog(`Switching to tab: ${tabName}`);
+            
+            // Update tab styling
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            // Show corresponding page
+            const pageMap = {
+                'wallet': 'wallet-page',
+                'apply': 'apply-pass-page',
+                'status': 'status-page',
+                'passes': 'pass-list-page'
+            };
+            
+            showPage(pageMap[tabName]);
+        }
+        
+        // Show error message
+        function showError(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.className = 'error-message';
+            container.textContent = message;
+            container.style.display = 'block';
+            setTimeout(() => container.style.display = 'none', 5000);
+        }
+        
+        // Show success message
+        function showSuccess(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.className = 'success-message';
+            container.textContent = message;
+            container.style.display = 'block';
+            setTimeout(() => container.style.display = 'none', 5000);
+        }
+        
+        // Get device ID
+        function getDeviceId() {
+            let deviceId = localStorage.getItem('device_id');
+            if (!deviceId) {
+                deviceId = 'DEVICE_' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                localStorage.setItem('device_id', deviceId);
+            }
+            return deviceId;
+        }
+        
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const iamsmartId = document.getElementById('iamsmart-id').value;
+            const password = document.getElementById('password').value;
+            const deviceId = getDeviceId();
+            
+            debugLog(`Login attempt: ${iamsmartId}, Device: ${deviceId}`);
+            
+            try {
+                const res = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ iamsmart_id: iamsmartId, password, device_id: deviceId })
+                });
+                
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    showError('login-error', data.error || 'Login failed');
+                    debugLog(`Login failed: ${data.error}`);
+                    return;
+                }
+                
+                authToken = data.token;
+                currentUser = data.user;
+                localStorage.setItem('auth_token', authToken);
+                localStorage.setItem('current_user', JSON.stringify(currentUser));
+                
+                debugLog(`Login successful: ${currentUser.iamsmart_id}`);
+                
+                // Update wallet page
+                document.getElementById('wallet-user-id').textContent = currentUser.iamsmart_id;
+                document.getElementById('wallet-public-key').textContent = currentUser.public_key;
+                document.getElementById('wallet-device-id').textContent = currentUser.device_id || deviceId;
+                
+                // Show tabs and logout button
+                document.getElementById('tab-navigation').style.display = 'flex';
+                document.getElementById('logout-button').style.display = 'block';
+                
+                showPage('wallet-page');
+            } catch (err) {
+                showError('login-error', 'Network error: ' + err.message);
+                debugLog(`Login error: ${err.message}`);
+            }
+        });
+        
+        // Apply pass form
+        document.getElementById('apply-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const siteId = document.getElementById('apply-site').value;
+            const purposeId = document.getElementById('apply-purpose').value;
+            const visitDateTime = document.getElementById('apply-datetime').value;
+            const deviceId = getDeviceId();
+            
+            debugLog(`Applying for pass: Site=${siteId}, Purpose=${purposeId}`);
+            
+            try {
+                const res = await fetch(`${API_BASE}/apply-pass`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        site_id: siteId,
+                        purpose_id: purposeId,
+                        visit_date_time: visitDateTime,
+                        device_id: deviceId
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    showError('apply-error', data.error || 'Application failed');
+                    debugLog(`Application failed: ${data.error}`);
+                    return;
+                }
+                
+                debugLog(`Pass applied: ${data.pass.pass_id}`);
+                showSuccess('apply-success', 'Pass application submitted successfully!');
+                document.getElementById('apply-form').reset();
+                
+                setTimeout(() => showTab('status'), 2000);
+            } catch (err) {
+                showError('apply-error', 'Network error: ' + err.message);
+                debugLog(`Application error: ${err.message}`);
+            }
+        });
+        
+        // Load status
+        async function loadStatus() {
+            debugLog('Loading application status');
+            try {
+                const res = await fetch(`${API_BASE}/my-passes`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                
+                if (!res.ok) {
+                    throw new Error('Login Timeout Expired');
+                }
+                
+                const data = await res.json();
+                
+                const container = document.getElementById('status-container');
+                
+                if (!data.passes || data.passes.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>No Pass</p></div>';
+                    return;
+                }
+                
+                // Group by status
+                const grouped = {
+                    'In Process': [],
+                    'Pass': [],
+                    'No Pass': []
+                };
+                
+                data.passes.forEach(pass => {
+                    if (grouped[pass.status]) {
+                        grouped[pass.status].push(pass);
+                    }
+                });
+                
+                let html = '';
+                for (const [status, passes] of Object.entries(grouped)) {
+                    if (passes.length > 0) {
+                        html += `<h3 style="margin: 20px 0 10px; color: #e5e5e7;">${status} (${passes.length})</h3>`;
+                        passes.forEach(pass => {
+                            html += `
+                                <div class="info-card">
+                                    <h3>${pass.site_id} - ${pass.purpose_id}</h3>
+                                    <p>Pass ID: ${pass.pass_id}</p>
+                                    <p>Visit: ${new Date(pass.visit_date_time).toLocaleString()}</p>
+                                    <p>Applied: ${new Date(pass.created_timestamp).toLocaleString()}</p>
+                                    <span class="status-badge status-${status.toLowerCase().replace(' ', '')}">${status}</span>
+                                </div>
+                            `;
+                        });
+                    }
+                }
+                
+                container.innerHTML = html || '<div class="empty-state"><div class="emoji">📭</div><p>No Pass</p></div>';
+                debugLog(`Loaded ${data.passes.length} passes`);
+            } catch (err) {
+                document.getElementById('status-container').innerHTML = 
+                    '<div class="empty-state"><div class="emoji">⏱️</div><p>Login Timeout Expired</p></div>';
+                debugLog(`Error loading status: ${err.message}`);
+            }
+        }
+        
+        // Load passes
+        async function loadPasses() {
+            debugLog('Loading passes');
+            try {
+                const res = await fetch(`${API_BASE}/my-passes`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                
+                if (!res.ok) {
+                    throw new Error('Login Timeout Expired');
+                }
+                
+                const data = await res.json();
+                
+                const container = document.getElementById('pass-list-container');
+                
+                if (!data.passes || data.passes.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>No Pass</p></div>';
+                    return;
+                }
+                
+                let html = '';
+                data.passes.forEach(pass => {
+                    const isActive = pass.status === 'Pass' && !pass.used_flag && !pass.revoked_flag;
+                    const cardClass = isActive ? 'pass-card active' : 'pass-card inactive';
+                    const clickAction = isActive ? `onclick="showQRCode('${pass.pass_id}')"` : '';
+                    
+                    html += `
+                        <div class="${cardClass}" ${clickAction}>
+                            <h3>${pass.site_id} - ${pass.purpose_id}</h3>
+                            <p><strong>Pass ID:</strong> ${pass.pass_id}</p>
+                            <p><strong>Visit:</strong> ${new Date(pass.visit_date_time).toLocaleString()}</p>
+                            <span class="status-badge status-${pass.status.toLowerCase().replace(' ', '')}">${pass.status}</span>
+                            ${isActive ? '<p style="margin-top: 10px; color: #34c759; font-weight: 600;">✓ Tap to show QR code</p>' : ''}
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                debugLog(`Loaded ${data.passes.length} passes`);
+            } catch (err) {
+                document.getElementById('pass-list-container').innerHTML = 
+                    '<div class="empty-state"><div class="emoji">⏱️</div><p>Login Timeout Expired</p></div>';
+                debugLog(`Error loading passes: ${err.message}`);
+            }
+        }
+        
+        // Show QR code
+        async function showQRCode(passId) {
+            debugLog(`Generating QR for pass: ${passId}`);
+            currentPass = passId;
+            
+            try {
+                const res = await fetch(`${API_BASE}/get-qr/${passId}`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    alert(data.error || 'Failed to generate QR code');
+                    debugLog(`QR generation failed: ${data.error}`);
+                    return;
+                }
+                
+                // Update QR page info
+                document.getElementById('qr-pass-id').textContent = passId;
+                
+                // Generate QR code
+                const qrContainer = document.getElementById('qr-code');
+                qrContainer.innerHTML = '';
+                qrContainer.classList.remove('expired');
+                
+                try {
+                    new QRCode(qrContainer, {
+                        text: data.qr_payload,
+                        width: 250,
+                        height: 250,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                    debugLog(`QR code rendered successfully`);
+                } catch (error) {
+                    debugLog(`QR render error: ${error.message}`);
+                    showError('qr-error', 'Failed to render QR code: ' + error.message);
+                    return;
+                }
+                
+                // Start countdown timer
+                startQRTimer(data.expires_in || 60);
+                
+                showPage('qr-page');
+                debugLog(`QR code displayed for pass: ${passId}`);
+            } catch (err) {
+                alert('Network error: ' + err.message);
+                debugLog(`QR error: ${err.message}`);
+            }
+        }
+        
+        // Start QR timer
+        function startQRTimer(seconds) {
+            if (qrTimer) clearInterval(qrTimer);
+            
+            let remaining = seconds;
+            const timerElement = document.getElementById('qr-timer');
+            const qrContainer = document.getElementById('qr-code');
+            
+            qrTimer = setInterval(() => {
+                remaining--;
+                timerElement.textContent = remaining;
+                
+                if (remaining <= 10) {
+                    timerElement.className = 'timer danger';
+                } else if (remaining <= 30) {
+                    timerElement.className = 'timer warning';
+                } else {
+                    timerElement.className = 'timer';
+                }
+                
+                if (remaining <= 0) {
+                    clearInterval(qrTimer);
+                    timerElement.textContent = 'EXPIRED';
+                    timerElement.className = 'timer danger';
+                    qrContainer.classList.add('expired');
+                    debugLog('QR code expired');
+                }
+            }, 1000);
+        }
+        
+        // Regenerate QR
+        function regenerateQR() {
+            if (currentPass) {
+                debugLog(`Regenerating QR for pass: ${currentPass}`);
+                showQRCode(currentPass);
+            }
+        }
+        
+        // Logout
+        function logout() {
+            debugLog('Logging out');
+            authToken = null;
+            currentUser = null;
+            currentPass = null;
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('current_user');
+            document.getElementById('tab-navigation').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'none';
+            showPage('login-page');
+        }
+        
+        // Check for saved session
+        window.addEventListener('load', () => {
+            const savedToken = localStorage.getItem('auth_token');
+            const savedUser = localStorage.getItem('current_user');
+            
+            if (savedToken && savedUser) {
+                authToken = savedToken;
+                currentUser = JSON.parse(savedUser);
+                
+                document.getElementById('wallet-user-id').textContent = currentUser.iamsmart_id;
+                document.getElementById('wallet-public-key').textContent = currentUser.public_key;
+                document.getElementById('wallet-device-id').textContent = currentUser.device_id;
+                
+                document.getElementById('tab-navigation').style.display = 'flex';
+                document.getElementById('logout-button').style.display = 'block';
+                
+                showPage('wallet-page');
+                debugLog('Restored session for: ' + currentUser.iamsmart_id);
+            } else {
+                debugLog('No saved session, showing login');
+            }
+        });
+        
+        debugLog('User Wallet App initialized');
+    </script>
+</body>
+</html>
