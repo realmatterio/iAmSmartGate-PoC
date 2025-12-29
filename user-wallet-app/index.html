@@ -153,17 +153,17 @@
         }
         
         .btn-primary {
-            background: #34c759;
+            background: #2fb37c;
             color: white;
         }
         
         .btn-primary:hover {
-            background: #2fb350;
+            background: #166b48;
             transform: translateY(-1px);
         }
         
         .btn-logout {
-            background: #ff3b30;
+            background: #b13e38;
             color: white;
             position: fixed;
             bottom: 20px;
@@ -174,7 +174,7 @@
         }
         
         .btn-logout:hover {
-            background: #e6342a;
+            background: rgb(143, 33, 28);
         }
         
         .btn-secondary {
@@ -424,7 +424,7 @@
         <div id="tab-navigation" class="tabs" style="display: none;">
             <button class="tab active" onclick="showTab('wallet')">
                 <span class="emoji">🔐</span>
-                <span>Wallet ID</span>
+                <span>Wallet & ID</span>
             </button>
             <button class="tab" onclick="showTab('apply')">
                 <span class="emoji">📝</span>
@@ -447,14 +447,14 @@
                 <div id="login-error" style="display: none;"></div>
                 <form id="login-form">
                     <div class="form-group">
-                        <label>iAmSmart ID</label>
+                        <label>iAmSmart Demo ID</label>
                         <input type="text" id="iamsmart-id" required placeholder="USER001">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
+                        <label>Demo Password</label>
                         <input type="password" id="password" required placeholder="demo123">
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">📱Login with iAM Smart</button>
                     <p style="text-align: center; margin-top: 15px; color: #8e8e93; font-size: 0.9em;">
                         Demo: Use any ID starting with "USER" or password "demo123"
                     </p>
@@ -464,16 +464,27 @@
             <!-- Wallet Page -->
             <div id="wallet-page" class="page">
                 <div class="info-card">
-                    <h3>User ID</h3>
+                    <h3>User ID/Address</h3>
                     <p id="wallet-user-id"></p>
                 </div>
                 <div class="info-card">
-                    <h3>Public Key</h3>
-                    <p id="wallet-public-key" style="font-size: 0.75em;"></p>
-                </div>
-                <div class="info-card">
-                    <h3>Device ID</h3>
+                    <h3>Wallet Device ID</h3>
                     <p id="wallet-device-id"></p>
+                </div>
+                <div class="info-card" style="border-left-color: #FF9500;">
+                    <h3>Wallet Types</h3>
+                    <p>📄 Visitor Passes</p>
+                    <p>🆔 Visitor Credentials</p>
+                </div>
+                <div class="info-card" style="border-left-color: #FF9500;">
+                    <h3>Wallet Balance</h3>
+                    <p>✅ Active Passes: <strong id="wallet-active-count" style="float: right;">0</strong></p>
+                    <p>✔️ Used Passes: <strong id="wallet-used-count" style="float: right;">0</strong></p>
+                    <p>⏱️ Expired Passes: <strong id="wallet-expired-count" style="float: right;">0</strong></p>
+                </div>
+                <div class="info-card" style="border-left-color: #5E6AD2;">
+                    <h3>Public Key (HSM)</h3>
+                    <p id="wallet-public-key" style="font-size: 0.75em;"></p>
                 </div>
             </div>
             
@@ -531,6 +542,25 @@
                         <p>Loading passes...</p>
                     </div>
                 </div>
+                
+                <h3 style="margin: 30px 0 20px; color: #e5e5e7; border-top: 1px solid #3a3a3c; padding-top: 20px;">My Credentials</h3>
+                <div class="info-card" style="border-left-color: #5E6AD2;">
+                    <h3>🆔 Visitor Credential</h3>
+                    <p><strong>Credential Type:</strong> Verified Visitor</p>
+                    <p><strong>Credential ID:</strong> VC-2025-000123</p>
+                    <p><strong>Issued By:</strong> iAM Smart</p>
+                    <p><strong>Issue Date:</strong> 2025-01-15</p>
+                    <p><strong>Valid Until:</strong> 2035-01-15</p>
+                    <p><strong>Verification Status:</strong> <span style="color: #34c759;">✓ Verified</span></p>
+                </div>
+                <div class="info-card" style="border-left-color: #FF9500;">
+                    <h3>👤 Identity Verification</h3>
+                    <p><strong>Verified Name:</strong> LAM LA AM </p>
+                    <p><strong>ID Number:</strong> HKID******(#)</p>
+                    <p><strong>Biometric Status:</strong> <span style="color: #34c759;">✓ Enrolled</span></p>
+                    <p><strong>Background Check:</strong> <span style="color: #34c759;">✓ Passed</span></p>
+                    <p><strong>Last Updated:</strong> 2025-12-28</p>
+                </div>
             </div>
             
             <!-- QR Code Page -->
@@ -556,7 +586,7 @@
         </div>
         
         <!-- Logout Button (Fixed at Bottom) -->
-        <button id="logout-button" class="btn btn-logout" style="display: none;" onclick="logout()">🚪 Logout</button>
+        <button id="logout-button" class="btn btn-logout" style="display: none;" onclick="logout()">⏏️ Logout</button>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -592,6 +622,7 @@
             // Load data for specific pages
             if (pageId === 'status-page') loadStatus();
             if (pageId === 'pass-list-page') loadPasses();
+            if (pageId === 'wallet-page') updateWalletBalance();
         }
         
         // Show tab
@@ -677,6 +708,9 @@
                 document.getElementById('wallet-user-id').textContent = currentUser.iamsmart_id;
                 document.getElementById('wallet-public-key').textContent = currentUser.public_key;
                 document.getElementById('wallet-device-id').textContent = currentUser.device_id || deviceId;
+                
+                // Load and display wallet balance
+                updateWalletBalance();
                 
                 // Show tabs and logout button
                 document.getElementById('tab-navigation').style.display = 'flex';
@@ -796,6 +830,46 @@
         }
         
         // Load passes
+        async function updateWalletBalance() {
+            try {
+                const res = await fetch(`${API_BASE}/my-passes`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                
+                if (!res.ok) return;
+                
+                const data = await res.json();
+                const passes = data.passes || [];
+                
+                const now = new Date();
+                let activeCount = 0;
+                let usedCount = 0;
+                let expiredCount = 0;
+                
+                passes.forEach(pass => {
+                    if (pass.used_flag || pass.status === 'Used') {
+                        usedCount++;
+                    } else if (pass.status === 'Pass' && !pass.revoked_flag) {
+                        if (pass.expiry_timestamp && new Date(pass.expiry_timestamp) < now) {
+                            expiredCount++;
+                        } else {
+                            activeCount++;
+                        }
+                    } else if (pass.expiry_timestamp && new Date(pass.expiry_timestamp) < now) {
+                        expiredCount++;
+                    }
+                });
+                
+                document.getElementById('wallet-active-count').textContent = activeCount;
+                document.getElementById('wallet-used-count').textContent = usedCount;
+                document.getElementById('wallet-expired-count').textContent = expiredCount;
+                
+                debugLog(`Wallet balance updated: ${activeCount} active, ${usedCount} used, ${expiredCount} expired`);
+            } catch (err) {
+                debugLog(`Error updating wallet balance: ${err.message}`);
+            }
+        }
+        
         async function loadPasses() {
             debugLog('Loading passes');
             try {
