@@ -74,6 +74,7 @@ class Pass(db.Model):
             'purpose_id': self.purpose_id,
             'visit_date_time': self.visit_date_time.isoformat() if self.visit_date_time else None,
             'status': self.status,
+            'qr_signature': self.qr_signature,
             'created_timestamp': self.created_timestamp.isoformat() if self.created_timestamp else None,
             'approved_timestamp': self.approved_timestamp.isoformat() if self.approved_timestamp else None,
             'used_timestamp': self.used_timestamp.isoformat() if self.used_timestamp else None,

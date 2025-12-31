@@ -286,7 +286,7 @@ ADMIN_CONSOLE_HTML = """
         }
         .refresh-btn {
             position: fixed;
-            bottom: 30px;
+            bottom: 80px;
             right: 30px;
             width: 60px;
             height: 60px;
@@ -298,9 +298,28 @@ ADMIN_CONSOLE_HTML = """
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(77, 184, 168, 0.4);
             transition: all 0.3s;
+            z-index: 100;
         }
         .refresh-btn:hover {
             transform: scale(1.1) rotate(180deg);
+        }
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(29, 44, 42, 0.5);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            z-index: 99;
+            border-top: 1px solid rgba(77, 184, 168, 0.3);
+        }
+        .footer-bar p {
+            margin: 0;
+            opacity: 0.9;
         }
         .system-status {
             padding: 15px;
@@ -345,6 +364,168 @@ ADMIN_CONSOLE_HTML = """
             font-size: 0.9em;
             word-break: break-all;
         }
+        .hsm-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .hsm-logs-panel {
+            background: #f7fafc;
+            border: 2px solid #4DB8A8;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .hsm-qr-panel {
+            background: #f7fafc;
+            border: 2px solid #4DB8A8;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .algorithm-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .algorithm-tag {
+            padding: 12px 24px;
+            border: 3px solid #e2e8f0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1em;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            color: #4a5568;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+        .algorithm-tag:hover {
+            transform: translateY(-1px);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.9);
+        }
+        .algorithm-tag:active {
+            transform: translateY(1px);
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+        }
+        .algorithm-tag.active {
+            background: linear-gradient(145deg, #34c759, #28a745);
+            color: white;
+            border-color: #34c759;
+            box-shadow: 0 0 20px rgba(52, 199, 89, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            transform: translateY(1px);
+        }
+        .algorithm-tag.active::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            border-radius: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .algorithm-tag.pqc {
+            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            color: #4a5568;
+            border-color: #e2e8f0;
+        }
+        .algorithm-tag.pqc.active {
+            background: linear-gradient(145deg, #8b5cf6, #7c3aed);
+            color: white;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+        .algorithm-info {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            width: 100%;
+            border-left: 4px solid #4DB8A8;
+        }
+        .algorithm-info.dummy {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .payload-log-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .payload-log-item:hover {
+            border-color: #4DB8A8;
+            box-shadow: 0 2px 8px rgba(77, 184, 168, 0.2);
+        }
+        .payload-log-item.selected {
+            border-color: #4DB8A8;
+            background: #e6fffa;
+        }
+        .payload-scroll {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .payload-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .payload-scroll::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        .payload-scroll::-webkit-scrollbar-thumb {
+            background: #4DB8A8;
+            border-radius: 4px;
+        }
+        .payload-scroll::-webkit-scrollbar-thumb:hover {
+            background: #3a9d8f;
+        }
+        .qr-display-area {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .qr-placeholder {
+            color: #a0aec0;
+            text-align: center;
+            font-size: 1em;
+        }
+        #hsm-qr-code {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        #hsm-qr-code.rsa-qr {
+            border: 4px solid #34c759;
+            box-shadow: 0 0 15px rgba(52, 199, 89, 0.3);
+        }
+        #hsm-qr-code.pqc-qr {
+            border: 4px solid #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
         .signature-log {
             background: white;
             padding: 10px;
@@ -366,6 +547,7 @@ ADMIN_CONSOLE_HTML = """
         }
     
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -566,48 +748,73 @@ ADMIN_CONSOLE_HTML = """
             <div id="hsm" class="tab-content">
                 <h2 style="margin-bottom: 20px;">🔐 Quantum Safe HSM Console</h2>
                 
-                <!-- PKCS#11 Interface Section -->
-                <div class="hsm-section">
-                    <h3>
-                        <span style="background: #4DB8A8; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">PKCS#11</span>
-                        Public Key Query Interface
-                    </h3>
-                    <p style="color: #718096; margin-bottom: 15px;">Query HSM for user public keys via PKCS#11 interface</p>
-                    
-                    <div class="hsm-query-form">
-                        <input type="text" id="hsm-user-id" placeholder="Enter User ID (e.g., USER001)" 
-                               style="flex: 1; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px;">
-                        <button class="btn btn-primary" onclick="queryPublicKey()">🔍 Query Public Key</button>
+                <div class="hsm-grid">
+                    <!-- Top Section: JSON Payload Logs -->
+                    <div class="hsm-logs-panel">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="margin: 0;">
+                                <span style="background: #4DB8A8; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">LOGS</span>
+                                QR Payloads History
+                            </h3>
+                            <button class="btn btn-success" onclick="loadQRPayloads()" style="padding: 8px 15px; font-size: 0.85em;">
+                                🔄 Refresh
+                            </button>
+                        </div>
+                        <p style="color: #718096; margin-bottom: 15px; font-size: 0.9em;">
+                            All historical QR payloads from database - Select to display QR code
+                        </p>
+                        
+                        <div class="payload-scroll" id="payload-logs-container">
+                            <!-- Payload logs will be loaded here -->
+                            <div style="text-align: center; color: #a0aec0; padding: 40px 20px;">
+                                <div style="font-size: 2em; margin-bottom: 10px;">📦</div>
+                                <div>Loading historical QR payloads...</div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div id="hsm-query-result" style="display: none;">
-                        <h4 style="margin-bottom: 10px; color: #2d3748;">Query Result:</h4>
-                        <div class="hsm-result" id="hsm-result-content"></div>
-                    </div>
-                </div>
-                
-                <!-- Signature Logs Section -->
-                <div class="hsm-section">
-                    <h3>
-                        <span style="background: #48bb78; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">LOGS</span>
-                        Signature Request & Verification Log
-                    </h3>
-                    <p style="color: #718096; margin-bottom: 15px;">Real-time log of HSM signature operations</p>
-                    
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                        <button class="btn btn-success" onclick="loadSignatureLogs()">🔄 Refresh Logs</button>
-                        <select id="log-filter" onchange="loadSignatureLogs()" 
-                                style="padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px;">
-                            <option value="all">All Operations</option>
-                            <option value="sign">Sign Only</option>
-                            <option value="verify">Verify Only</option>
-                            <option value="success">Success Only</option>
-                            <option value="failed">Failed Only</option>
-                        </select>
-                    </div>
-                    
-                    <div id="signature-logs-container" style="max-height: 500px; overflow-y: auto;">
-                        <!-- Signature logs will be loaded here -->
+                    <!-- Bottom Section: QR Code Display -->
+                    <div class="hsm-qr-panel">
+                        <h3 style="margin-bottom: 15px;">
+                            <span style="background: #48bb78; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em;">QR CODE</span>
+                            Visual Display
+                        </h3>
+                        
+                        <!-- Algorithm Selector -->
+                        <div class="algorithm-selector">
+                            <div class="algorithm-tag active" onclick="selectAlgorithm('RSA')" id="algo-RSA">
+                                🔒 RSA-2048
+                            </div>
+                            <div class="algorithm-tag pqc" onclick="selectAlgorithm('FALCON')" id="algo-FALCON">
+                                🦅 FALCON-512
+                            </div>
+                            <div class="algorithm-tag pqc" onclick="selectAlgorithm('DILITHIUM')" id="algo-DILITHIUM">
+                                💎 Dilithium2
+                            </div>
+                            <div class="algorithm-tag pqc" onclick="selectAlgorithm('SPHINCS')" id="algo-SPHINCS">
+                                🌳 SPHINCS+-128s
+                            </div>
+                        </div>
+                        
+                        <div class="qr-display-area">
+                            <div id="hsm-qr-placeholder" class="qr-placeholder">
+                                <div style="font-size: 3em; margin-bottom: 15px;">📱</div>
+                                <div style="font-size: 1.1em; font-weight: 600;">Select a payload to view QR code</div>
+                                <div style="margin-top: 8px; font-size: 0.9em;">Click on any log entry on the left</div>
+                            </div>
+                            <div id="hsm-qr-code" style="display: none;"></div>
+                            <div id="hsm-algorithm-info" style="display: none;"></div>
+                            <div id="hsm-qr-details" style="display: none; margin-top: 20px; width: 100%; text-align: left;">
+                                <div style="background: #f7fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #4DB8A8;">
+                                    <div style="margin-bottom: 10px; font-weight: 600; color: #2d3748;">Payload Details:</div>
+                                    <div style="font-family: 'Courier New', monospace; font-size: 0.85em; color: #4a5568;">
+                                        <div style="margin-bottom: 5px;"><strong>Pass ID:</strong> <span id="qr-detail-pass"></span></div>
+                                        <div style="margin-bottom: 5px;"><strong>Timestamp:</strong> <span id="qr-detail-timestamp"></span></div>
+                                        <div style="margin-bottom: 5px; word-break: break-all;"><strong>Signature:</strong> <span id="qr-detail-signature"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -615,6 +822,10 @@ ADMIN_CONSOLE_HTML = """
     </div>
     
     <button class="refresh-btn" onclick="refreshData()" title="Refresh Data">↻</button>
+    
+    <div class="footer-bar">
+        <p>© 2025-2026 Real Matter Technology Limited.</p>
+    </div>
     
     <script>
         const API_BASE = 'http://localhost:5000';
@@ -644,7 +855,7 @@ ADMIN_CONSOLE_HTML = """
             if (tabName === 'pending') loadPendingPasses();
             if (tabName === 'all-passes') loadAllPasses();
             if (tabName === 'logs') loadAuditLogs();
-            if (tabName === 'hsm') loadSignatureLogs();
+            if (tabName === 'hsm') loadQRPayloads();
         }
         
         async function loadDashboard() {
@@ -935,44 +1146,413 @@ ADMIN_CONSOLE_HTML = """
             else if (activeTab.includes('Pending')) loadPendingPasses();
             else if (activeTab.includes('All Passes')) loadAllPasses();
             else if (activeTab.includes('Audit')) loadAuditLogs();
-            else if (activeTab.includes('HSM')) loadSignatureLogs();
+            else if (activeTab.includes('HSM')) loadQRPayloads();
         }
         
-        async function queryPublicKey() {
-            const userId = document.getElementById('hsm-user-id').value.trim();
-            if (!userId) {
-                alert('Please enter a User ID');
+        let selectedPayload = null;
+        let qrCodeInstance = null;
+        let selectedAlgorithm = 'RSA';
+        
+        const algorithmSpecs = {
+            'RSA': {
+                name: 'RSA-2048 with PSS Padding',
+                shortName: 'RSA-2048 PSS',
+                signatureSize: 256,
+                payloadSize: 430,
+                qrVersion: 10,
+                qrBlocks: 57,
+                totalDots: 3249,
+                description: 'Classical RSA signature (current implementation)',
+                isPQC: false,
+                canFitInQR: true
+            },
+            'FALCON': {
+                name: 'FALCON-512',
+                shortName: 'FALCON-512',
+                signatureSize: 666,
+                payloadSize: 950,
+                qrVersion: 21,
+                qrBlocks: 101,
+                totalDots: 10201,
+                description: 'NIST PQC - Compact lattice-based signature',
+                isPQC: true,
+                canFitInQR: true,
+                warning: 'Large QR code - may be difficult to scan'
+            },
+            'DILITHIUM': {
+                name: 'CRYSTALS-Dilithium2',
+                shortName: 'Dilithium2',
+                signatureSize: 2420,
+                payloadSize: 3290,
+                qrVersion: '40+',
+                qrBlocks: 177,
+                totalDots: 31329,
+                description: 'NIST PQC - Module-lattice based signature',
+                isPQC: true,
+                canFitInQR: false,
+                warning: '❌ EXCEEDS QR CAPACITY - Cannot fit in standard QR code (max ~2,953 bytes)'
+            },
+            'SPHINCS': {
+                name: 'SPHINCS+-128s',
+                shortName: 'SPHINCS+-128s',
+                signatureSize: 7856,
+                payloadSize: 10540,
+                qrVersion: 'N/A',
+                qrBlocks: 0,
+                totalDots: 0,
+                description: 'NIST PQC - Hash-based stateless signature',
+                isPQC: true,
+                canFitInQR: false,
+                warning: '❌ FAR EXCEEDS QR CAPACITY - Needs >10KB (3.5× maximum QR capacity)'
+            }
+        };
+        
+        function selectAlgorithm(algo) {
+            selectedAlgorithm = algo;
+            
+            // Update active state
+            document.querySelectorAll('.algorithm-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            document.getElementById('algo-' + algo).classList.add('active');
+            
+            // Re-display QR code with new algorithm if a payload is selected
+            if (selectedPayload) {
+                displayQRCode(selectedPayload, selectedPayload.p, selectedPayload.t, selectedPayload.s);
+            }
+        }
+        
+        async function loadQRPayloads() {
+            try {
+                // Always fetch all passes from database for historical data
+                const res = await fetch(`${API_BASE}/admin/all-passes`);
+                const data = await res.json();
+                
+                const container = document.getElementById('payload-logs-container');
+                
+                if (data.passes && data.passes.length > 0) {
+                    // Show ALL passes that are approved or used
+                    // This includes all historical records from the database
+                    const passesWithQR = data.passes.filter(pass => {
+                        // Show if status is 'Pass', 'Used', or has been used
+                        return (pass.status === 'Pass' || pass.status === 'Used' || pass.used_flag === true);
+                    });
+                    
+                    if (passesWithQR.length > 0) {
+                        container.innerHTML = passesWithQR.map((pass, index) => {
+                            // Use actual timestamp data from database
+                            const timestamp = pass.approved_timestamp || pass.created_timestamp || new Date().toISOString();
+                            const signature = pass.qr_signature || 'No signature generated yet';
+                            const hasSignature = pass.qr_signature && pass.qr_signature !== null;
+                            const statusBadge = pass.used_flag ? '✓ USED' : pass.status;
+                            const statusColor = pass.used_flag ? '#48bb78' : '#4DB8A8';
+                            
+                            return `
+                                <div class="payload-log-item" onclick="selectPayload('${pass.pass_id}', '${timestamp}', \`${signature}\`, ${index})">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <div style="font-weight: 600; color: #2d3748;">
+                                            #${index + 1} - ${pass.pass_id}
+                                        </div>
+                                        <div style="font-size: 0.85em; color: #718096;">
+                                            ${new Date(timestamp).toLocaleString()}
+                                        </div>
+                                    </div>
+                                    <div style="font-family: 'Courier New', monospace; font-size: 0.8em; color: #4a5568; margin-bottom: 5px;">
+                                        <strong>Pass ID:</strong> ${pass.pass_id}
+                                    </div>
+                                    <div style="font-family: 'Courier New', monospace; font-size: 0.8em; color: #4a5568; margin-bottom: 5px;">
+                                        <strong>Timestamp:</strong> ${timestamp}
+                                    </div>
+                                    <div style="font-family: 'Courier New', monospace; font-size: 0.75em; color: ${hasSignature ? '#718096' : '#f56565'}; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        <strong>Signature:</strong> ${hasSignature ? signature.substring(0, 50) + '...' : '⚠️ ' + signature}
+                                    </div>
+                                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="background: #4DB8A8; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.75em;">
+                                            ${pass.iamsmart_id || 'Unknown User'}
+                                        </span>
+                                        <span style="background: ${statusColor}; color: white; padding: 2px 8px; border-radius: 3px; font-size: 0.75em;">
+                                            ${statusBadge}
+                                        </span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    } else {
+                        container.innerHTML = `
+                            <div style="text-align: center; color: #a0aec0; padding: 40px 20px;">
+                                <div style="font-size: 2em; margin-bottom: 10px;">📭</div>
+                                <div>No QR payloads in database</div>
+                                <div style="font-size: 0.85em; margin-top: 5px;">Historical QR signatures will appear here</div>
+                            </div>
+                        `;
+                    }
+                } else {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: #a0aec0; padding: 40px 20px;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">📭</div>
+                            <div>No passes available in database</div>
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                console.error('Error loading QR payloads:', err);
+                document.getElementById('payload-logs-container').innerHTML = `
+                    <div style="text-align: center; color: #f56565; padding: 40px 20px;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">⚠️</div>
+                        <div>Error loading payloads from database</div>
+                        <div style="font-size: 0.85em; margin-top: 5px;">${err.message}</div>
+                    </div>
+                `;
+            }
+        }
+        
+        function selectPayload(passId, timestamp, signature, index) {
+            // Remove previous selection
+            document.querySelectorAll('.payload-log-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Add selection to clicked item
+            document.querySelectorAll('.payload-log-item')[index].classList.add('selected');
+            
+            // Store selected payload
+            selectedPayload = {
+                p: passId,
+                t: timestamp,
+                s: signature
+            };
+            
+            // Display QR code
+            displayQRCode(selectedPayload, passId, timestamp, signature);
+        }
+        
+        function displayQRCode(payload, passId, timestamp, signature) {
+            // Hide placeholder, show QR code
+            document.getElementById('hsm-qr-placeholder').style.display = 'none';
+            document.getElementById('hsm-qr-code').style.display = 'block';
+            document.getElementById('hsm-qr-details').style.display = 'block';
+            document.getElementById('hsm-algorithm-info').style.display = 'block';
+            
+            // Clear previous QR code
+            const qrContainer = document.getElementById('hsm-qr-code');
+            qrContainer.innerHTML = '';
+            
+            // Check if signature exists
+            const hasSignature = signature && signature !== 'No signature generated yet';
+            
+            if (!hasSignature) {
+                // Show message if no signature
+                qrContainer.innerHTML = `
+                    <div style="color: #f59e0b; text-align: center; padding: 40px;">
+                        <div style="font-size: 3em; margin-bottom: 15px;">⚠️</div>
+                        <div style="font-size: 1.1em; font-weight: 600; margin-bottom: 10px;">No QR Signature Available</div>
+                        <div style="font-size: 0.9em; color: #718096;">This pass was approved but QR code was never generated by the user</div>
+                    </div>
+                `;
+                
+                // Update details
+                document.getElementById('qr-detail-pass').textContent = passId;
+                document.getElementById('qr-detail-timestamp').textContent = timestamp;
+                document.getElementById('qr-detail-signature').textContent = '⚠️ Not generated';
+                document.getElementById('hsm-algorithm-info').innerHTML = '';
                 return;
             }
             
-            try {
-                // Query HSM for public key
-                const res = await fetch(`${API_BASE}/admin/hsm/query-public-key/${userId}`);
-                const data = await res.json();
+            const algo = algorithmSpecs[selectedAlgorithm];
+            let actualSignature;
+            
+            // Set border style based on algorithm type (after algo is defined)
+            qrContainer.className = algo.isPQC ? 'pqc-qr' : 'rsa-qr';
+            
+            if (selectedAlgorithm === 'RSA') {
+                // Use real signature for RSA - optimize for smallest QR code
+                // Convert hex signature to base64 for 32% size reduction
+                actualSignature = hexToBase64(signature);
                 
-                const resultDiv = document.getElementById('hsm-query-result');
-                const contentDiv = document.getElementById('hsm-result-content');
+                // Use compact JSON with single-char keys
+                const qrPayload = JSON.stringify({
+                    p: passId,
+                    t: timestamp,
+                    s: actualSignature
+                });
                 
-                if (data.success) {
-                    contentDiv.innerHTML = `
-                        <div style="margin-bottom: 10px;"><strong>User ID:</strong> ${data.user_id}</div>
-                        <div style="margin-bottom: 10px;"><strong>Algorithm:</strong> ${data.algorithm}</div>
-                        <div style="margin-bottom: 10px;"><strong>Key Size:</strong> ${data.key_size} bits</div>
-                        <div style="margin-bottom: 10px;"><strong>Created:</strong> ${new Date(data.created_at).toLocaleString()}</div>
-                        <div style="margin-bottom: 10px;"><strong>Status:</strong> <span style="color: #48bb78; font-weight: 600;">✓ ACTIVE</span></div>
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0;">
-                            <strong>Public Key (PEM):</strong>
-                            <pre style="background: #2d3748; color: #48bb78; padding: 10px; border-radius: 4px; margin-top: 5px; overflow-x: auto;">${data.public_key}</pre>
+                // Generate optimized QR code for RSA with Low error correction
+                try {
+                    new QRCode(qrContainer, {
+                        text: qrPayload,
+                        width: 300,
+                        height: 300,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.L  // Low (7%) - smallest QR code
+                    });
+                    // Green border is applied via CSS class 'rsa-qr'
+                } catch (error) {
+                    console.error('QR generation error:', error);
+                    qrContainer.innerHTML = `
+                        <div style="color: #f56565; text-align: center; padding: 20px;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">⚠️</div>
+                            <div>Failed to generate QR code</div>
+                            <div style="font-size: 0.85em; margin-top: 5px;">${error.message}</div>
                         </div>
                     `;
-                    resultDiv.style.display = 'block';
-                } else {
-                    contentDiv.innerHTML = `<div style="color: #f56565;"><strong>Error:</strong> ${data.message || 'Public key not found'}</div>`;
-                    resultDiv.style.display = 'block';
                 }
-            } catch (err) {
-                alert('Error querying HSM: ' + err.message);
+            } else {
+                // Generate dummy signature for PQC algorithms
+                actualSignature = generateDummySignature(algo.signatureSize);
+                
+                // Check if algorithm can fit in QR code
+                if (!algo.canFitInQR) {
+                    // Show error message for algorithms that can't fit
+                    qrContainer.innerHTML = `
+                        <div style="color: #f56565; text-align: center; padding: 40px; max-width: 500px;">
+                            <div style="font-size: 3em; margin-bottom: 15px;">⚠️</div>
+                            <div style="font-size: 1.2em; font-weight: 600; margin-bottom: 10px; color: #dc2626;">Cannot Generate QR Code</div>
+                            <div style="font-size: 0.95em; color: #4a5568; line-height: 1.6;">${algo.warning}</div>
+                            <div style="margin-top: 20px; padding: 15px; background: #fee2e2; border-radius: 8px; font-size: 0.85em; text-align: left;">
+                                <strong>Technical Details:</strong><br>
+                                • Signature size: ${algo.signatureSize} bytes<br>
+                                • Estimated payload: ~${algo.payloadSize} bytes<br>
+                                • QR Version 40 max capacity: ~2,953 bytes (Low error correction)<br>
+                                • This algorithm requires ${(algo.payloadSize / 2953).toFixed(1)}× the maximum QR capacity
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Create scaled dummy QR code for PQC algorithms that CAN fit
+                    // Use accurate block counts based on actual QR versions
+                    const scaledBlocks = algo.qrBlocks;
+                    
+                    // Determine canvas size and block size
+                    let canvasSize, blockSize;
+                    if (selectedAlgorithm === 'FALCON') {
+                        // Version 21: 101×101 blocks
+                        canvasSize = 600;
+                        blockSize = Math.floor(canvasSize / scaledBlocks);
+                    } else if (selectedAlgorithm === 'DILITHIUM') {
+                        // Exceeds Version 40: 177×177 blocks (theoretical)
+                        canvasSize = 700;
+                        blockSize = Math.floor(canvasSize / scaledBlocks);
+                    }
+                    
+                    const canvas = document.createElement('canvas');
+                    canvas.width = canvasSize;
+                    canvas.height = canvasSize;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // White background
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvasSize, canvasSize);
+                    
+                    // Generate QR-like pattern with accurate block counts
+                    for (let y = 0; y < scaledBlocks; y++) {
+                        for (let x = 0; x < scaledBlocks; x++) {
+                            if (Math.random() > 0.5) {
+                                ctx.fillStyle = '#000000';
+                                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+                            }
+                        }
+                    }
+                    
+                    // Add corner markers (scaled appropriately)
+                    const markerSize = Math.max(5, Math.floor(7 * blockSize / 12));
+                    const drawCornerMarker = (x, y) => {
+                        ctx.fillStyle = '#000000';
+                        ctx.fillRect(x * blockSize, y * blockSize, markerSize * blockSize, markerSize * blockSize);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect((x + 1) * blockSize, (y + 1) * blockSize, (markerSize - 2) * blockSize, (markerSize - 2) * blockSize);
+                        ctx.fillStyle = '#000000';
+                        ctx.fillRect((x + 2) * blockSize, (y + 2) * blockSize, (markerSize - 4) * blockSize, (markerSize - 4) * blockSize);
+                    };
+                    
+                    drawCornerMarker(0, 0);
+                    drawCornerMarker(scaledBlocks - markerSize, 0);
+                    drawCornerMarker(0, scaledBlocks - markerSize);
+                    
+                    // Add border color based on algorithm type
+                    ctx.strokeStyle = '#8b5cf6'; // Purple for PQC
+                    ctx.lineWidth = 4;
+                    ctx.strokeRect(0, 0, canvasSize, canvasSize);
+                    
+                    qrContainer.appendChild(canvas);
+                }
             }
+            
+            // Show algorithm info with prominent size indicator
+            const isDummy = selectedAlgorithm !== 'RSA';
+            const infoClass = isDummy ? 'algorithm-info dummy' : 'algorithm-info';
+            const sizeMultiplier = (algo.signatureSize / 256).toFixed(2);
+            const sizeColor = isDummy ? '#f59e0b' : '#4DB8A8';
+            
+            const warningColor = !algo.canFitInQR ? '#dc2626' : (algo.warning ? '#f59e0b' : sizeColor);
+            const statusIcon = !algo.canFitInQR ? '❌' : (algo.warning ? '⚠️' : (isDummy ? '⚠️' : '✓'));
+            
+            document.getElementById('hsm-algorithm-info').innerHTML = `
+                <div class="${infoClass}">
+                    ${!algo.canFitInQR ? `<div style="color: #dc2626; font-weight: 600; margin-bottom: 8px;">${statusIcon} CANNOT FIT IN QR CODE</div>` : (isDummy ? `<div style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">${statusIcon} DEMONSTRATION - Simulated PQC Signature</div>` : '<div style="color: #4DB8A8; font-weight: 600; margin-bottom: 8px;">✓ OPTIMIZED - Base64 encoding + Low error correction</div>')}
+                    <div style="font-weight: 600; color: #2d3748; margin-bottom: 5px;">Algorithm: ${algo.name}</div>
+                    <div style="font-size: 0.9em; color: #4a5568; margin-bottom: 10px;">${algo.description}</div>
+                    
+                    <!-- Signature Size and QR Capacity Display -->
+                    <div style="border: 3px solid ${warningColor}; border-radius: 8px; padding: 12px; background: white; margin: 10px 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.2em; color: #718096; margin-bottom: 5px; font-weight: 600; letter-spacing: 1px;">SIGNATURE SIZE</div>
+                            <div style="font-size: 1.8em; font-weight: bold; color: ${warningColor}; margin-bottom: 5px;">
+                                ${algo.signatureSize} bytes
+                            </div>
+                            <div style="font-size: 1.2em; font-weight: 600; color: #4a5568;">
+                                ${sizeMultiplier}× RSA-2048 (256 bytes)
+                            </div>
+                        </div>
+                        ${algo.canFitInQR ? `
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+                            <div style="font-size: 0.85em; color: #4a5568; text-align: center;">
+                                <div><strong>QR Code:</strong> Version ${algo.qrVersion} | ${algo.qrBlocks}×${algo.qrBlocks} (${algo.totalDots.toLocaleString()} dots)</div>
+                                <div style="margin-top: 4px;"><strong>Payload:</strong> ~${algo.payloadSize} bytes | <strong>Error correction:</strong> L (7%)</div>
+                                ${algo.warning ? `<div style="margin-top: 8px; color: #f59e0b; font-weight: 600;">${algo.warning}</div>` : ''}
+                            </div>
+                        </div>
+                        ` : `
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+                            <div style="font-size: 0.85em; color: #dc2626; text-align: center; font-weight: 600;">
+                                ${algo.warning}
+                            </div>
+                        </div>
+                        `}
+                    </div>
+                    
+                    ${isDummy && algo.canFitInQR ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0; font-size: 0.85em; color: #718096;"><strong>Note:</strong> This is a visual representation scaled to show relative QR code size. </div>' : ''}
+                    ${!isDummy ? '<div style="font-size: 0.85em; color: #4a5568; margin-top: 5px;">✓ Actual signature from database - Optimized for smallest QR code (~40% size reduction vs High error correction + hex encoding)</div>' : ''}
+                </div>
+            `;
+            
+            // Update details
+            document.getElementById('qr-detail-pass').textContent = passId;
+            document.getElementById('qr-detail-timestamp').textContent = timestamp;
+            const sigDisplay = actualSignature.length > 100 ? actualSignature.substring(0, 100) + '...' : actualSignature;
+            document.getElementById('qr-detail-signature').textContent = sigDisplay;
+        }
+        
+        function hexToBase64(hexString) {
+            // Convert hex string to base64 for more compact encoding
+            // Hex: 2 chars per byte, Base64: ~1.33 chars per byte = 32% smaller
+            const bytes = [];
+            for (let i = 0; i < hexString.length; i += 2) {
+                bytes.push(parseInt(hexString.substr(i, 2), 16));
+            }
+            // Convert byte array to base64
+            const binString = String.fromCharCode(...bytes);
+            return btoa(binString);
+        }
+        
+        function generateDummySignature(sizeInBytes) {
+            // Generate a hex string of the specified size
+            const hexChars = '0123456789abcdef';
+            let signature = '';
+            for (let i = 0; i < sizeInBytes * 2; i++) {
+                signature += hexChars[Math.floor(Math.random() * 16)];
+            }
+            return signature;
         }
         
         async function loadSignatureLogs() {

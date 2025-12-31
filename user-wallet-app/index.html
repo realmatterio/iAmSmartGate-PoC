@@ -917,6 +917,16 @@
         }
         
         // Show QR code
+        // Convert hex signature to base64 for compact QR encoding (32% size reduction)
+        function hexToBase64(hexString) {
+            const bytes = [];
+            for (let i = 0; i < hexString.length; i += 2) {
+                bytes.push(parseInt(hexString.substr(i, 2), 16));
+            }
+            const binString = String.fromCharCode(...bytes);
+            return btoa(binString);
+        }
+        
         async function showQRCode(passId) {
             debugLog(`Generating QR for pass: ${passId}`);
             currentPass = passId;
@@ -943,13 +953,21 @@
                 qrContainer.classList.remove('expired');
                 
                 try {
+                    // Parse payload and optimize signature encoding
+                    const payload = JSON.parse(data.qr_payload);
+                    if (payload.s) {
+                        // Convert hex signature to base64 for compact encoding
+                        payload.s = hexToBase64(payload.s);
+                    }
+                    const optimizedPayload = JSON.stringify(payload);
+                    
                     new QRCode(qrContainer, {
-                        text: data.qr_payload,
+                        text: optimizedPayload,
                         width: 250,
                         height: 250,
                         colorDark: "#000000",
                         colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H
+                        correctLevel: QRCode.CorrectLevel.L  // Low (7%) - smallest QR code
                     });
                     debugLog(`QR code rendered successfully`);
                 } catch (error) {

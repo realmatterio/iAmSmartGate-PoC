@@ -735,19 +735,38 @@
             }
         }
         
+        // Convert base64 signature back to hex for backend verification
+        function base64ToHex(base64String) {
+            const binString = atob(base64String);
+            let hex = '';
+            for (let i = 0; i < binString.length; i++) {
+                const byte = binString.charCodeAt(i).toString(16).padStart(2, '0');
+                hex += byte;
+            }
+            return hex;
+        }
+        
         // Process QR code
         async function processQRCode(qrData) {
             debugLog('Processing QR code');
             debugLog(`QR data: ${qrData.substring(0, 100)}...`);
             
             try {
+                // Parse QR payload and convert base64 signature back to hex
+                const payload = JSON.parse(qrData);
+                if (payload.s) {
+                    // Backend expects hex signature, convert from base64
+                    payload.s = base64ToHex(payload.s);
+                }
+                const backendPayload = JSON.stringify(payload);
+                
                 const res = await fetch(`${API_BASE}/scan-qr`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${authToken}`
                     },
-                    body: JSON.stringify({ qr_payload: qrData })
+                    body: JSON.stringify({ qr_payload: backendPayload })
                 });
                 
                 const data = await res.json();
