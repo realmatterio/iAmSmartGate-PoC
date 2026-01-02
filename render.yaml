@@ -1,0 +1,48 @@
+services:
+  # Backend API Service
+  - type: web
+    name: iamsmartgate-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn app:create_app()
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: TEST_MODE
+        value: "false"
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: DATABASE_URL
+        value: "sqlite:///iamsmartgate.db"
+
+  # Admin Console Service
+  - type: web
+    name: iamsmartgate-admin-console
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn admin_console:create_admin_app()
+    envVars:
+      - key: DEBUG
+        value: "false"
+
+  # Gate Reader App (Static Site)
+  - type: static_site
+    name: iamsmartgate-gate-reader
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: gate-reader-app
+    routes:
+      - path: /
+        destination: /index.html
+
+  # User Wallet App (Static Site)
+  - type: static_site
+    name: iamsmartgate-user-wallet
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: user-wallet-app
+    routes:
+      - path: /
+        destination: /index.html
