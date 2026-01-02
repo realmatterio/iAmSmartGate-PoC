@@ -30,19 +30,15 @@ services:
         value: "false"
 
   # Gate Reader App (Static Site)
-  - type: static_site
+  - type: web
     name: iAmSmartGate-PoC-Gate
+    runtime: python
     buildCommand: echo "Static site - no build needed"
-    staticPublishPath: gate-reader-app
-    routes:
-      - path: /
-        destination: /index.html
+    startCommand: cd gate-reader-app && python -m http.server $PORT
 
   # User Wallet App (Static Site)
-  - type: static_site
+  - type: web
     name: iAmSmartGate-PoC-Wallet
+    runtime: python
     buildCommand: echo "Static site - no build needed"
-    staticPublishPath: user-wallet-app
-    routes:
-      - path: /
-        destination: /index.html
+    startCommand: cd user-wallet-app && python -m http.server $PORT
