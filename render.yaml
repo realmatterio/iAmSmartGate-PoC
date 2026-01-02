@@ -1,10 +1,10 @@
 services:
   # Backend API Service
   - type: web
-    name: iamsmartgate-backend
+    name: iAmSmartGate-PoC-Backend
     runtime: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && gunicorn app:create_app
+    startCommand: cd backend && gunicorn app:app
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -21,7 +21,7 @@ services:
 
   # Admin Console Service
   - type: web
-    name: iamsmartgate-admin-console
+    name: iAmSmartGate-PoC-Admin
     runtime: python
     buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && gunicorn admin_console:app
@@ -31,7 +31,7 @@ services:
 
   # Gate Reader App (Static Site)
   - type: static_site
-    name: iamsmartgate-gate-reader
+    name: iAmSmartGate-PoC-Gate
     buildCommand: echo "Static site - no build needed"
     staticPublishPath: gate-reader-app
     routes:
@@ -40,7 +40,7 @@ services:
 
   # User Wallet App (Static Site)
   - type: static_site
-    name: iamsmartgate-user-wallet
+    name: iAmSmartGate-PoC-Wallet
     buildCommand: echo "Static site - no build needed"
     staticPublishPath: user-wallet-app
     routes:
