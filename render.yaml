@@ -4,7 +4,7 @@ services:
     name: iamsmartgate-backend
     runtime: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && gunicorn app:create_app
+    startCommand: cd backend && gunicorn app:create_app\(\)
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -24,7 +24,7 @@ services:
     name: iamsmartgate-admin-console
     runtime: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && gunicorn admin_console:create_admin_app
+    startCommand: cd backend && gunicorn admin_console:create_admin_app\(\)
     envVars:
       - key: DEBUG
         value: "false"
@@ -46,3 +46,4 @@ services:
     routes:
       - path: /
         destination: /index.html
+
