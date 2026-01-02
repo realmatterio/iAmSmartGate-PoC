@@ -6519,3 +6519,423 @@ AttributeError: 'User' object has no attribute 'registered_timestamp'
 2025-12-31 21:46:44,766 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:46:44] "GET /admin/all-passes HTTP/1.1" 200 -
 2025-12-31 21:46:54,816 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:46:54] "GET /admin/all-passes HTTP/1.1" 200 -
 2025-12-31 21:47:04,445 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:47:04] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:47:46,802 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:47:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:08,780 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 21:48:08,812 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 21:53:08.763642+08:00 (in 299.951053 seconds)
+2025-12-31 21:48:08,812 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:53:08 CST)" (scheduled at 2025-12-31 21:48:08.763642+08:00)
+2025-12-31 21:48:08,898 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 21:48:08,898 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:53:08 CST)" executed successfully
+2025-12-31 21:48:09,609 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:09] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:14,717 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:14] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:24,733 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:24] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:34,735 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:34] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:42,873 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:42] "OPTIONS /api/my-passes HTTP/1.1" 200 -
+2025-12-31 21:48:44,443 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:44] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:48:54,772 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:48:54] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:49:04,752 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:49:04] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:49:14,770 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:49:14] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:49:24,759 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:49:24] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:49:34,769 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:49:34] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:49:46,772 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:49:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:50:46,765 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:50:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:51:22,375 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 21:51:22,403 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 21:56:22.308031+08:00 (in 299.904463 seconds)
+2025-12-31 21:51:22,409 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:56:22 CST)" (scheduled at 2025-12-31 21:51:22.308031+08:00)
+2025-12-31 21:51:22,453 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 21:51:22,468 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:56:22 CST)" executed successfully
+2025-12-31 21:51:46,760 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:51:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:52:46,771 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:52:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2025-12-31 21:53:08,787 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 21:53:08,796 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 21:58:08.763642+08:00 (in 299.967086 seconds)
+2025-12-31 21:53:08,796 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:58:08 CST)" (scheduled at 2025-12-31 21:53:08.763642+08:00)
+2025-12-31 21:53:08,811 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 21:53:08,829 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 21:58:08 CST)" executed successfully
+2025-12-31 21:56:22,352 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 21:56:22,407 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:01:22.308031+08:00 (in 299.900217 seconds)
+2025-12-31 21:56:22,407 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:01:22 CST)" (scheduled at 2025-12-31 21:56:22.308031+08:00)
+2025-12-31 21:56:22,498 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 21:56:22,498 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:01:22 CST)" executed successfully
+2025-12-31 21:58:08,785 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 21:58:08,799 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:03:08.763642+08:00 (in 299.963803 seconds)
+2025-12-31 21:58:08,801 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:03:08 CST)" (scheduled at 2025-12-31 21:58:08.763642+08:00)
+2025-12-31 21:58:08,841 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 21:58:08,841 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:03:08 CST)" executed successfully
+2025-12-31 21:59:56,645 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:59:56] "OPTIONS /api/scan-qr HTTP/1.1" 200 -
+2025-12-31 21:59:56,907 [INFO] api_routes: [API] QR scan by gate: GATE001
+2025-12-31 21:59:58,069 [DEBUG] crypto_utils: Signature verification successful
+2025-12-31 21:59:58,602 [INFO] api_routes: [AUDIT] scan: EXPIRED_QR - QR age: 3274.934425s
+2025-12-31 21:59:58,602 [WARNING] api_routes: [API] Expired QR for pass: PASS3A24E49F29D7 (age: 3274.934425s)
+2025-12-31 21:59:58,607 [INFO] werkzeug: 127.0.0.1 - - [31/Dec/2025 21:59:58] "POST /api/scan-qr HTTP/1.1" 200 -
+2025-12-31 22:01:22,374 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:01:22,408 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:06:22.308031+08:00 (in 299.900680 seconds)
+2025-12-31 22:01:22,410 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:06:22 CST)" (scheduled at 2025-12-31 22:01:22.308031+08:00)
+2025-12-31 22:01:22,456 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:01:22,460 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:06:22 CST)" executed successfully
+2025-12-31 22:03:08,768 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:03:08,768 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:08:08.763642+08:00 (in 299.995434 seconds)
+2025-12-31 22:03:08,768 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:08:08 CST)" (scheduled at 2025-12-31 22:03:08.763642+08:00)
+2025-12-31 22:03:08,793 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:03:08,795 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:08:08 CST)" executed successfully
+2025-12-31 22:06:22,349 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:06:22,379 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:11:22.308031+08:00 (in 299.928328 seconds)
+2025-12-31 22:06:22,379 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:11:22 CST)" (scheduled at 2025-12-31 22:06:22.308031+08:00)
+2025-12-31 22:06:22,446 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:06:22,446 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:11:22 CST)" executed successfully
+2025-12-31 22:08:08,795 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:08:08,822 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:13:08.763642+08:00 (in 299.940750 seconds)
+2025-12-31 22:08:08,824 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:13:08 CST)" (scheduled at 2025-12-31 22:08:08.763642+08:00)
+2025-12-31 22:08:08,894 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:08:08,898 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:13:08 CST)" executed successfully
+2025-12-31 22:11:22,441 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:11:22,530 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:16:22.308031+08:00 (in 299.777383 seconds)
+2025-12-31 22:11:22,618 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:16:22 CST)" (scheduled at 2025-12-31 22:11:22.308031+08:00)
+2025-12-31 22:11:22,879 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:11:22,900 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:16:22 CST)" executed successfully
+2025-12-31 22:13:08,787 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:13:08,787 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:18:08.763642+08:00 (in 299.975966 seconds)
+2025-12-31 22:13:08,787 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:18:08 CST)" (scheduled at 2025-12-31 22:13:08.763642+08:00)
+2025-12-31 22:13:08,819 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:13:08,819 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:18:08 CST)" executed successfully
+2025-12-31 22:16:22,447 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:16:22,479 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:21:22.308031+08:00 (in 299.828533 seconds)
+2025-12-31 22:16:22,493 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:21:22 CST)" (scheduled at 2025-12-31 22:16:22.308031+08:00)
+2025-12-31 22:16:22,573 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:16:22,573 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:21:22 CST)" executed successfully
+2025-12-31 22:29:37,036 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:29:37,187 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:33:08.763642+08:00 (in 211.575654 seconds)
+2025-12-31 22:29:37,230 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:33:08 CST)" was missed by 0:01:28.433004
+2025-12-31 22:32:50,548 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:32:50,607 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:36:22.308031+08:00 (in 211.700868 seconds)
+2025-12-31 22:32:50,607 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:36:22 CST)" was missed by 0:01:28.299132
+2025-12-31 22:33:08,836 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:33:08,852 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:33:08 CST)" (scheduled at 2025-12-31 22:33:08.763642+08:00)
+2025-12-31 22:33:08,853 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:38:08.763642+08:00 (in 299.909963 seconds)
+2025-12-31 22:33:08,916 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:33:08,916 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:38:08 CST)" executed successfully
+2025-12-31 22:36:22,341 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:36:22,407 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:41:22.308031+08:00 (in 299.900227 seconds)
+2025-12-31 22:36:22,411 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:41:22 CST)" (scheduled at 2025-12-31 22:36:22.308031+08:00)
+2025-12-31 22:36:22,574 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:36:22,574 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:41:22 CST)" executed successfully
+2025-12-31 22:38:08,825 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:38:08,873 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:38:08 CST)" (scheduled at 2025-12-31 22:38:08.763642+08:00)
+2025-12-31 22:38:08,873 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:43:08.763642+08:00 (in 299.890300 seconds)
+2025-12-31 22:38:08,967 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:38:08,967 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:43:08 CST)" executed successfully
+2025-12-31 22:41:22,354 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:41:22,404 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:46:22.308031+08:00 (in 299.903894 seconds)
+2025-12-31 22:41:22,404 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:46:22 CST)" (scheduled at 2025-12-31 22:41:22.308031+08:00)
+2025-12-31 22:41:22,503 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:41:22,520 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:46:22 CST)" executed successfully
+2025-12-31 22:43:08,824 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:43:08,859 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:48:08.763642+08:00 (in 299.903788 seconds)
+2025-12-31 22:43:08,859 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:48:08 CST)" (scheduled at 2025-12-31 22:43:08.763642+08:00)
+2025-12-31 22:43:08,964 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:43:08,968 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:48:08 CST)" executed successfully
+2025-12-31 22:46:22,359 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:46:22,422 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:51:22 CST)" (scheduled at 2025-12-31 22:46:22.308031+08:00)
+2025-12-31 22:46:22,422 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:51:22.308031+08:00 (in 299.901577 seconds)
+2025-12-31 22:46:22,516 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:46:22,530 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:51:22 CST)" executed successfully
+2025-12-31 22:48:08,793 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:48:08,857 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:53:08.763642+08:00 (in 299.906388 seconds)
+2025-12-31 22:48:08,875 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:53:08 CST)" (scheduled at 2025-12-31 22:48:08.763642+08:00)
+2025-12-31 22:48:09,083 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:48:09,094 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:53:08 CST)" executed successfully
+2025-12-31 22:51:22,409 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:51:22,445 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:56:22.308031+08:00 (in 299.862042 seconds)
+2025-12-31 22:51:22,445 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:56:22 CST)" (scheduled at 2025-12-31 22:51:22.308031+08:00)
+2025-12-31 22:51:22,545 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:51:22,545 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:56:22 CST)" executed successfully
+2025-12-31 22:53:08,805 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2025-12-31 22:53:08,836 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:58:08 CST)" (scheduled at 2025-12-31 22:53:08.763642+08:00)
+2025-12-31 22:53:08,836 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2025-12-31 22:58:08.763642+08:00 (in 299.926757 seconds)
+2025-12-31 22:53:08,886 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2025-12-31 22:53:08,900 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:58:08 CST)" executed successfully
+2026-01-01 02:45:05,620 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 02:45:05,688 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2025-12-31 22:56:22 CST)" was missed by 0:03:43.380753
+2026-01-01 02:45:05,726 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 02:46:22.308031+08:00 (in 76.581822 seconds)
+2026-01-01 02:45:05,726 [WARNING] apscheduler.executors.default: Run time of job "Clean up old audit logs (trigger: cron[hour='2', minute='0'], next run at: 2026-01-02 02:00:00 CST)" was missed by 0:45:05.726209
+2026-01-01 04:48:22,669 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 04:48:22,852 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 04:51:22.308031+08:00 (in 179.457996 seconds)
+2026-01-01 04:48:22,862 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 04:51:22 CST)" was missed by 0:02:00.524047
+2026-01-01 10:25:21,290 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 10:25:22,280 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 10:28:08 CST)" was missed by 0:02:13.460288
+2026-01-01 10:25:22,353 [WARNING] apscheduler.executors.default: Run time of job "Clean up old audit logs (trigger: cron[hour='2', minute='0'], next run at: 2026-01-02 02:00:00 CST)" was missed by 8:25:22.353226
+2026-01-01 10:25:22,359 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 10:28:08.763642+08:00 (in 166.413417 seconds)
+2026-01-01 10:27:50,489 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 10:27:50,568 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 04:51:22 CST)" was missed by 0:01:28.260669
+2026-01-01 10:27:50,568 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 10:31:22.308031+08:00 (in 211.739331 seconds)
+2026-01-01 10:28:08,795 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 10:28:08,826 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 10:28:08 CST)" (scheduled at 2026-01-01 10:28:08.763642+08:00)
+2026-01-01 10:28:08,826 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 10:33:08.763642+08:00 (in 299.936883 seconds)
+2026-01-01 10:28:08,984 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 10:28:08,984 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 10:33:08 CST)" executed successfully
+2026-01-01 17:11:28,494 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:11:28,552 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 10:31:22 CST)" was missed by 0:00:06.244246
+2026-01-01 17:11:28,552 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:16:22.308031+08:00 (in 293.755754 seconds)
+2026-01-01 17:13:15,160 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:13:15,206 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 10:33:08 CST)" was missed by 0:00:06.441538
+2026-01-01 17:13:15,206 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:18:08.763642+08:00 (in 293.557555 seconds)
+2026-01-01 17:16:22,345 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:16:22,393 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:21:22.308031+08:00 (in 299.915029 seconds)
+2026-01-01 17:16:22,393 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:21:22 CST)" (scheduled at 2026-01-01 17:16:22.308031+08:00)
+2026-01-01 17:16:22,521 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:16:22,534 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:21:22 CST)" executed successfully
+2026-01-01 17:18:08,792 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:18:08,839 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:23:08.763642+08:00 (in 299.924062 seconds)
+2026-01-01 17:18:08,839 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:23:08 CST)" (scheduled at 2026-01-01 17:18:08.763642+08:00)
+2026-01-01 17:18:08,964 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:18:08,965 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:23:08 CST)" executed successfully
+2026-01-01 17:21:22,356 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:21:22,420 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:21:22 CST)" (scheduled at 2026-01-01 17:21:22.308031+08:00)
+2026-01-01 17:21:22,420 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:26:22.308031+08:00 (in 299.887902 seconds)
+2026-01-01 17:21:22,514 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:21:22,514 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:26:22 CST)" executed successfully
+2026-01-01 17:23:08,797 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:23:08,812 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:28:08.763642+08:00 (in 299.951297 seconds)
+2026-01-01 17:23:08,812 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:28:08 CST)" (scheduled at 2026-01-01 17:23:08.763642+08:00)
+2026-01-01 17:23:08,907 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:23:08,907 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:28:08 CST)" executed successfully
+2026-01-01 17:26:22,382 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:26:22,434 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:31:22.308031+08:00 (in 299.873577 seconds)
+2026-01-01 17:26:22,434 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:31:22 CST)" (scheduled at 2026-01-01 17:26:22.308031+08:00)
+2026-01-01 17:26:22,506 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:26:22,506 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:31:22 CST)" executed successfully
+2026-01-01 17:32:33,447 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:32:33,482 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:33:08.763642+08:00 (in 35.281402 seconds)
+2026-01-01 17:32:33,482 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:33:08 CST)" was missed by 0:04:24.718598
+2026-01-01 17:33:08,780 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:33:08,780 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:38:08.763642+08:00 (in 299.983526 seconds)
+2026-01-01 17:33:08,780 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:38:08 CST)" (scheduled at 2026-01-01 17:33:08.763642+08:00)
+2026-01-01 17:33:08,906 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:33:08,922 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:38:08 CST)" executed successfully
+2026-01-01 17:35:47,011 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:35:47,074 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:36:22.308031+08:00 (in 35.233781 seconds)
+2026-01-01 17:35:47,078 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:36:22 CST)" was missed by 0:04:24.768218
+2026-01-01 17:36:22,328 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:36:22,328 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:41:22.308031+08:00 (in 299.979162 seconds)
+2026-01-01 17:36:22,328 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:41:22 CST)" (scheduled at 2026-01-01 17:36:22.308031+08:00)
+2026-01-01 17:36:22,487 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:36:22,487 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:41:22 CST)" executed successfully
+2026-01-01 17:38:08,791 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:38:08,807 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:43:08.763642+08:00 (in 299.956025 seconds)
+2026-01-01 17:38:08,807 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:43:08 CST)" (scheduled at 2026-01-01 17:38:08.763642+08:00)
+2026-01-01 17:38:08,908 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:38:08,908 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:43:08 CST)" executed successfully
+2026-01-01 17:41:22,651 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:41:22,965 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:46:22 CST)" (scheduled at 2026-01-01 17:41:22.308031+08:00)
+2026-01-01 17:41:22,973 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:46:22.308031+08:00 (in 299.339335 seconds)
+2026-01-01 17:41:23,381 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:41:23,398 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:46:22 CST)" executed successfully
+2026-01-01 17:43:08,913 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:43:08,976 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:48:08.763642+08:00 (in 299.786934 seconds)
+2026-01-01 17:43:08,979 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:48:08 CST)" (scheduled at 2026-01-01 17:43:08.763642+08:00)
+2026-01-01 17:43:09,108 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:43:09,114 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:48:08 CST)" executed successfully
+2026-01-01 17:46:22,383 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:46:22,441 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:51:22.308031+08:00 (in 299.867990 seconds)
+2026-01-01 17:46:22,444 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:51:22 CST)" (scheduled at 2026-01-01 17:46:22.308031+08:00)
+2026-01-01 17:46:22,541 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:46:22,557 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:51:22 CST)" executed successfully
+2026-01-01 17:48:08,800 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:48:08,854 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:53:08.763642+08:00 (in 299.908905 seconds)
+2026-01-01 17:48:08,857 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:53:08 CST)" (scheduled at 2026-01-01 17:48:08.763642+08:00)
+2026-01-01 17:48:08,986 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:48:08,992 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:53:08 CST)" executed successfully
+2026-01-01 17:51:22,544 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:51:22,891 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:56:22.308031+08:00 (in 299.416704 seconds)
+2026-01-01 17:51:22,891 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:56:22 CST)" (scheduled at 2026-01-01 17:51:22.308031+08:00)
+2026-01-01 17:51:22,998 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:51:23,007 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:56:22 CST)" executed successfully
+2026-01-01 17:53:08,785 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:53:08,819 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 17:58:08.763642+08:00 (in 299.945041 seconds)
+2026-01-01 17:53:08,823 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:58:08 CST)" (scheduled at 2026-01-01 17:53:08.763642+08:00)
+2026-01-01 17:53:08,933 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:53:08,938 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 17:58:08 CST)" executed successfully
+2026-01-01 17:56:22,369 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:56:22,417 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:01:22.308031+08:00 (in 299.890418 seconds)
+2026-01-01 17:56:22,419 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:01:22 CST)" (scheduled at 2026-01-01 17:56:22.308031+08:00)
+2026-01-01 17:56:22,502 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:56:22,507 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:01:22 CST)" executed successfully
+2026-01-01 17:58:08,797 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 17:58:08,818 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:03:08.763642+08:00 (in 299.945502 seconds)
+2026-01-01 17:58:08,822 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:03:08 CST)" (scheduled at 2026-01-01 17:58:08.763642+08:00)
+2026-01-01 17:58:08,905 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 17:58:08,905 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:03:08 CST)" executed successfully
+2026-01-01 18:01:22,352 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:01:22,413 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:06:22.308031+08:00 (in 299.894410 seconds)
+2026-01-01 18:01:22,417 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:06:22 CST)" (scheduled at 2026-01-01 18:01:22.308031+08:00)
+2026-01-01 18:01:22,530 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:01:22,530 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:06:22 CST)" executed successfully
+2026-01-01 18:03:08,796 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:03:08,859 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:08:08.763642+08:00 (in 299.904250 seconds)
+2026-01-01 18:03:08,859 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:08:08 CST)" (scheduled at 2026-01-01 18:03:08.763642+08:00)
+2026-01-01 18:03:09,085 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:03:09,094 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:08:08 CST)" executed successfully
+2026-01-01 18:06:22,357 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:06:22,419 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:11:22.308031+08:00 (in 299.888108 seconds)
+2026-01-01 18:06:22,427 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:11:22 CST)" (scheduled at 2026-01-01 18:06:22.308031+08:00)
+2026-01-01 18:06:22,627 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:06:22,640 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:11:22 CST)" executed successfully
+2026-01-01 18:08:08,807 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:08:08,854 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:08:08 CST)" (scheduled at 2026-01-01 18:08:08.763642+08:00)
+2026-01-01 18:08:08,854 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:13:08.763642+08:00 (in 299.909286 seconds)
+2026-01-01 18:08:09,013 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:08:09,028 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:13:08 CST)" executed successfully
+2026-01-01 18:11:22,504 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:11:22,837 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:16:22.308031+08:00 (in 299.470542 seconds)
+2026-01-01 18:11:22,837 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:16:22 CST)" (scheduled at 2026-01-01 18:11:22.308031+08:00)
+2026-01-01 18:11:23,028 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:11:23,041 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:16:22 CST)" executed successfully
+2026-01-01 18:13:08,834 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:13:08,888 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:18:08.763642+08:00 (in 299.875461 seconds)
+2026-01-01 18:13:08,888 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:18:08 CST)" (scheduled at 2026-01-01 18:13:08.763642+08:00)
+2026-01-01 18:13:09,054 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:13:09,054 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:18:08 CST)" executed successfully
+2026-01-01 18:16:22,358 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:16:22,422 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:21:22.308031+08:00 (in 299.885861 seconds)
+2026-01-01 18:16:22,422 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:21:22 CST)" (scheduled at 2026-01-01 18:16:22.308031+08:00)
+2026-01-01 18:16:22,581 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:16:22,593 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:21:22 CST)" executed successfully
+2026-01-01 18:18:08,797 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:18:08,836 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:23:08.763642+08:00 (in 299.926674 seconds)
+2026-01-01 18:18:08,839 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:23:08 CST)" (scheduled at 2026-01-01 18:18:08.763642+08:00)
+2026-01-01 18:18:08,967 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:18:08,974 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:23:08 CST)" executed successfully
+2026-01-01 18:21:22,375 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:21:22,441 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:26:22.308031+08:00 (in 299.866738 seconds)
+2026-01-01 18:21:22,445 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:26:22 CST)" (scheduled at 2026-01-01 18:21:22.308031+08:00)
+2026-01-01 18:21:22,639 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:21:22,651 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:26:22 CST)" executed successfully
+2026-01-01 18:23:08,800 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:23:08,832 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:28:08.763642+08:00 (in 299.930816 seconds)
+2026-01-01 18:23:08,846 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:28:08 CST)" (scheduled at 2026-01-01 18:23:08.763642+08:00)
+2026-01-01 18:23:08,987 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:23:08,987 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:28:08 CST)" executed successfully
+2026-01-01 18:26:22,369 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:26:22,448 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:31:22.308031+08:00 (in 299.859080 seconds)
+2026-01-01 18:26:22,463 [INFO] apscheduler.executors.default: Running job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:31:22 CST)" (scheduled at 2026-01-01 18:26:22.308031+08:00)
+2026-01-01 18:26:22,591 [DEBUG] background_jobs: [BACKGROUND] No passes to expire
+2026-01-01 18:26:22,591 [INFO] apscheduler.executors.default: Job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:31:22 CST)" executed successfully
+2026-01-01 18:28:09,316 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-01 18:28:10,697 [WARNING] apscheduler.executors.default: Run time of job "Check expired passes (trigger: interval[0:05:00], next run at: 2026-01-01 18:33:08 CST)" was missed by 0:00:01.911280
+2026-01-01 18:28:10,699 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-01 18:33:08.763642+08:00 (in 298.064404 seconds)
+2026-01-01 18:29:14,497 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:29:14] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-01 18:29:21,661 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:29:21] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-01 18:29:31,645 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:29:31] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-01 18:29:41,637 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:29:41] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-01 18:29:51,642 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:29:51] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-01 18:30:01,765 [INFO] werkzeug: 127.0.0.1 - - [01/Jan/2026 18:30:01] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:28:14,654 [INFO] crypto_utils: Loaded 6 keys from HSM storage
+2026-01-02 08:28:14,831 [INFO] __main__: Database initialized
+2026-01-02 08:28:14,937 [DEBUG] tzlocal: Looking up time zone info from registry
+2026-01-02 08:28:15,116 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-02 08:28:15,210 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-02 08:28:15,222 [INFO] apscheduler.scheduler: Added job "Check expired passes" to job store "default"
+2026-01-02 08:28:15,226 [INFO] apscheduler.scheduler: Added job "Clean up old audit logs" to job store "default"
+2026-01-02 08:28:15,227 [INFO] apscheduler.scheduler: Scheduler started
+2026-01-02 08:28:15,229 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-02 08:28:15,230 [INFO] background_jobs: [BACKGROUND] Background jobs started
+2026-01-02 08:28:15,230 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-02 08:33:15.115342+08:00 (in 299.884388 seconds)
+2026-01-02 08:28:15,232 [INFO] __main__: iAmSmartGate Backend Server started
+2026-01-02 08:28:15,452 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.16.174.202:5000
+2026-01-02 08:28:15,453 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2026-01-02 08:28:15,461 [INFO] werkzeug:  * Restarting with stat
+2026-01-02 08:28:21,844 [INFO] crypto_utils: Loaded 6 keys from HSM storage
+2026-01-02 08:28:21,861 [INFO] __main__: Database initialized
+2026-01-02 08:28:21,877 [DEBUG] tzlocal: Looking up time zone info from registry
+2026-01-02 08:28:21,907 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-02 08:28:21,918 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-02 08:28:21,925 [INFO] apscheduler.scheduler: Added job "Check expired passes" to job store "default"
+2026-01-02 08:28:21,925 [INFO] apscheduler.scheduler: Added job "Clean up old audit logs" to job store "default"
+2026-01-02 08:28:21,925 [INFO] apscheduler.scheduler: Scheduler started
+2026-01-02 08:28:21,925 [DEBUG] apscheduler.scheduler: Looking for jobs to run
+2026-01-02 08:28:21,925 [INFO] background_jobs: [BACKGROUND] Background jobs started
+2026-01-02 08:28:21,925 [DEBUG] apscheduler.scheduler: Next wakeup is due at 2026-01-02 08:33:21.907227+08:00 (in 299.982081 seconds)
+2026-01-02 08:28:21,925 [INFO] __main__: iAmSmartGate Backend Server started
+2026-01-02 08:28:21,981 [WARNING] werkzeug:  * Debugger is active!
+2026-01-02 08:28:22,002 [INFO] werkzeug:  * Debugger PIN: 915-450-734
+2026-01-02 08:28:23,529 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:23] "OPTIONS /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:28:23,544 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:23] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:23,634 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:23] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:23,850 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:23] "[31m[1mGET /api/my-passes HTTP/1.1[0m" 401 -
+2026-01-02 08:28:25,171 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:25] "OPTIONS /api/login HTTP/1.1" 200 -
+2026-01-02 08:28:25,434 [INFO] api_routes: [API] Login request for user: USER
+2026-01-02 08:28:25,434 [INFO] dummy_integrations: [DUMMY iAmSmart] Authenticating user: USER
+2026-01-02 08:28:25,938 [INFO] dummy_integrations: [DUMMY iAmSmart] Authentication SUCCESS for USER
+2026-01-02 08:28:25,971 [INFO] api_routes: [AUDIT] login: SUCCESS - Device: DEVICE_8BOM0AP19
+2026-01-02 08:28:25,983 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:25] "POST /api/login HTTP/1.1" 200 -
+2026-01-02 08:28:26,003 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:26] "GET /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:28:26,336 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:26] "GET /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:28:26,346 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:26] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:26,396 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:26] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:30,652 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:30] "OPTIONS /api/gate-login HTTP/1.1" 200 -
+2026-01-02 08:28:30,907 [INFO] api_routes: [API] Gate login request for: GATE001
+2026-01-02 08:28:30,908 [INFO] dummy_integrations: [DUMMY iAmSmart] Authenticating user: GATE001
+2026-01-02 08:28:31,409 [INFO] dummy_integrations: [DUMMY iAmSmart] Authentication SUCCESS for GATE001
+2026-01-02 08:28:31,414 [INFO] dummy_integrations: [DUMMY GPS] Validating location for GATE001
+2026-01-02 08:28:31,414 [DEBUG] dummy_integrations: [DUMMY GPS] Reported: 22.3193,114.1694, Expected: 22.3193,114.1694
+2026-01-02 08:28:31,414 [INFO] dummy_integrations: [DUMMY GPS] Exact match - VALID
+2026-01-02 08:28:31,433 [INFO] api_routes: [AUDIT] login: SUCCESS - GPS: 22.3193,114.1694
+2026-01-02 08:28:31,441 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:31] "POST /api/gate-login HTTP/1.1" 200 -
+2026-01-02 08:28:35,723 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:35] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:35,771 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:35] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:35,973 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:35] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:36,100 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:36] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:45,188 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:45] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:28:45,445 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:45] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:28:46,868 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:46] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:28:54,400 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:54] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:54,466 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:54] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:55,087 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:55] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:28:55,147 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:55] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:55,440 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:55] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:28:55,714 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:28:55] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:29:06,341 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:06] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:29:06,397 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:06] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:29:12,319 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:12] "OPTIONS /api/apply-pass HTTP/1.1" 200 -
+2026-01-02 08:29:12,632 [INFO] api_routes: [API] Pass application from user: USER
+2026-01-02 08:29:12,676 [INFO] api_routes: [AUDIT] application: SUBMITTED - Site: SITE002, Purpose: PURP003
+2026-01-02 08:29:12,680 [INFO] api_routes: [API] Pass created: PASS2CC4A01F9E85
+2026-01-02 08:29:12,680 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:12] "[35m[1mPOST /api/apply-pass HTTP/1.1[0m" 201 -
+2026-01-02 08:29:15,861 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:15] "OPTIONS /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:29:16,111 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:16] "GET /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:29:16,229 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:16] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:29:16,329 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:16] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:29:20,967 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:20] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:29:24,310 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:24] "OPTIONS /admin/approve-pass/PASS2CC4A01F9E85 HTTP/1.1" 200 -
+2026-01-02 08:29:24,681 [INFO] admin_routes: [ADMIN] Pass approved: PASS2CC4A01F9E85
+2026-01-02 08:29:24,686 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:24] "POST /admin/approve-pass/PASS2CC4A01F9E85 HTTP/1.1" 200 -
+2026-01-02 08:29:26,148 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:26] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:29:26,457 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:26] "GET /admin/system-status HTTP/1.1" 200 -
+2026-01-02 08:29:26,470 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:26] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:29:26,520 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:26] "GET /admin/statistics HTTP/1.1" 200 -
+2026-01-02 08:29:36,313 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:36] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:29:40,672 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:40] "OPTIONS /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:29:40,991 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:40] "GET /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:29:43,346 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:43] "GET /api/my-passes HTTP/1.1" 200 -
+2026-01-02 08:29:45,151 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:45] "OPTIONS /api/get-qr/PASS2CC4A01F9E85 HTTP/1.1" 200 -
+2026-01-02 08:29:45,446 [DEBUG] crypto_utils: Signed data for key user_USER
+2026-01-02 08:29:45,472 [INFO] api_routes: [API] QR code generated for pass: PASS2CC4A01F9E85
+2026-01-02 08:29:45,472 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:45] "GET /api/get-qr/PASS2CC4A01F9E85 HTTP/1.1" 200 -
+2026-01-02 08:29:46,010 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:46] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:29:56,321 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:29:56] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:30:06,316 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:06] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:30:16,317 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:16] "GET /admin/pending-passes HTTP/1.1" 200 -
+2026-01-02 08:30:16,631 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:16] "OPTIONS /api/scan-qr HTTP/1.1" 200 -
+2026-01-02 08:30:16,948 [INFO] api_routes: [API] QR scan by gate: GATE001
+2026-01-02 08:30:16,972 [DEBUG] crypto_utils: Signature verification successful
+2026-01-02 08:30:17,042 [INFO] api_routes: [AUDIT] scan: PASS - Site: SITE002, Purpose: PURP003
+2026-01-02 08:30:17,044 [INFO] api_routes: [API] Access granted for pass: PASS2CC4A01F9E85
+2026-01-02 08:30:17,047 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:17] "POST /api/scan-qr HTTP/1.1" 200 -
+2026-01-02 08:30:23,812 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:23] "GET /admin/audit-logs?limit=100 HTTP/1.1" 200 -
+2026-01-02 08:30:25,737 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:25] "GET /admin/audit-logs?limit=100 HTTP/1.1" 200 -
+2026-01-02 08:30:26,133 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:26] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:30:35,705 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:35] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:30:45,716 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:45] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:30:55,737 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:30:55] "GET /admin/all-passes HTTP/1.1" 200 -
+2026-01-02 08:31:05,720 [INFO] werkzeug: 127.0.0.1 - - [02/Jan/2026 08:31:05] "GET /admin/all-passes HTTP/1.1" 200 -
