@@ -828,7 +828,7 @@ ADMIN_CONSOLE_HTML = """
     </div>
     
     <script>
-        const API_BASE = 'https://iamsmartgate-poc.onrender.com';
+        const API_BASE = 'https://iamsmartgate-backend.onrender.com';
         let currentTabScroll = 0;
         
         function scrollTabs(direction) {
