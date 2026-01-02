@@ -24,7 +24,7 @@ services:
     name: iamsmartgate-admin-console
     runtime: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && gunicorn admin_console:create_admin_app
+    startCommand: cd backend && gunicorn admin_console:app
     envVars:
       - key: DEBUG
         value: "false"
