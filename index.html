@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAmSmartGate - Access Control System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4DB8A8 0%, #3A9D8F 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            opacity: 0.95;
+            font-size: 1.1em;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .app-button {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            background: white;
+            text-decoration: none;
+            color: #2d3748;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .app-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #4DB8A8;
+        }
+        
+        .app-button:last-child {
+            margin-bottom: 0;
+        }
+        
+        .app-icon {
+            font-size: 3em;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4DB8A8 0%, #3A9D8F 100%);
+            border-radius: 15px;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+        
+        .app-info {
+            flex: 1;
+        }
+        
+        .app-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+        
+        .app-url {
+            font-size: 0.9em;
+            color: #718096;
+            word-break: break-all;
+        }
+        
+        .footer {
+            background: #f7fafc;
+            padding: 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .app-button {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 iAmSmartGate</h1>
+            <p>Secure Access Control System - Choose Your Portal</p>
+        </div>
+        
+        <div class="content">
+            <a href="https://iamsmartgate-poc-wallet.onrender.com/" class="app-button" target="_blank">
+                <div class="app-icon">📱</div>
+                <div class="app-info">
+                    <div class="app-title">Visitor Pass and User Wallet</div>
+                    <div class="app-url">https://iamsmartgate-poc-wallet.onrender.com/</div>
+                </div>
+            </a>
+            
+            <a href="https://iamsmartgate-poc-gate.onrender.com/" class="app-button" target="_blank">
+                <div class="app-icon">📷</div>
+                <div class="app-info">
+                    <div class="app-title">QR Code Gate Reader</div>
+                    <div class="app-url">https://iamsmartgate-poc-gate.onrender.com/</div>
+                </div>
+            </a>
+            
+            <a href="https://iamsmartgate-poc.onrender.com/" class="app-button" target="_blank">
+                <div class="app-icon">⚙️</div>
+                <div class="app-info">
+                    <div class="app-title">Backend and Admin Console</div>
+                    <div class="app-url">https://iamsmartgate-poc.onrender.com/</div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025-2026 Real Matter Technology Limited. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
